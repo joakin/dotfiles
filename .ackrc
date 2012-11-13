@@ -1,0 +1,14 @@
+--smart-case
+--type-set
+ignorables=.log,.tmp,.pdf
+--ignore-dir=node_modules
+--ignore-dir=vendor
+--ignore-dir=public
+--type-add
+html=.jst,.tpl,.jade,.hbs,.moustache
+--type-add
+css=.sass,.less,.scss
+--type-add
+js=.coffee
+--type-add
+clojure=.cljs
