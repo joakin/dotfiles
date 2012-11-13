@@ -10,3 +10,13 @@ if [[ $is_win ]]; then
     alias vi='gvim'
 fi
 
+# Aliases
+#
+
+alias ls='ls --color'
+alias ll='ls -l'
+alias la='ls -a'
+alias l='ls -la'
+
+alias rm='rm -i'
+

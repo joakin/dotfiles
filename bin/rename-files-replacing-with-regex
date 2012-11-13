@@ -1,0 +1,24 @@
+#!/bin/sh
+
+if [ $# -lt 2 ] ; then
+    echo ""
+    echo "Renames files complying a pattern with a replacement pattern"
+    echo "Acts in the current folder, not recursively"
+    echo ""
+    echo "Usage:"
+    echo "    $0 [pattern-to-substitute] [replacement-pattern]"
+    exit 0
+fi
+
+for x in `ls`
+do
+    if [ ! -f $x ]; then
+        continue
+    fi
+    
+    lc=`echo $x | sed -e "s/$1/$2/g"`
+    if [ $lc != $x ]; then
+        mv -iv $x $lc
+    fi
+done
+
