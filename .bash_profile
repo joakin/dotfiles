@@ -19,6 +19,8 @@ if [[ $is_win ]]; then
   BIN2=/d/devel/bin
   JAVA_HOME=$BIN2/jdk1.6.0_07
 
+  GIT_COMPLETION=/etc/git-completion.bash
+
   # PATH MADNESS
   BINS=
   BINS=$BINS:$HOME/bin
@@ -108,8 +110,20 @@ alias cuts="cut -d' '"
 # Vars
 #
 
-export TERM=xterm-color
+TERM=xterm-color
 
 # Enables color in the terminal bash shell export
 CLICOLOR=1
+
+# Prompt customizations
+
+source $GIT_COMPLETION
+# enable git unstaged indicators - set to a non-empty value
+GIT_PS1_SHOWDIRTYSTATE="."
+# enable showing of untracked files - set to a non-empty value
+GIT_PS1_SHOWUNTRACKEDFILES="."
+# enable stash checking - set to a non-empty value
+GIT_PS1_SHOWSTASHSTATE="."
+# enable showing of HEAD vs its upstream
+GIT_PS1_SHOWUPSTREAM="auto"
 
