@@ -94,6 +94,17 @@ alias l='ls -lha'
 
 alias rm='rm -i'
 
+alias serve_this='python -m SimpleHTTPServer'
+alias c='clear'
+
+alias g='git'
+
+alias v='vim'
+alias v='vim .'
+
+alias collapse="sed -e 's/  */ /g'"
+alias cuts="cut -d' '"
+
 # Vars
 #
 
