@@ -32,7 +32,7 @@ fi
 # Aliases
 #
 
-alias ls='ls --color'
+alias ls='ls -G'
 alias ll='ls -l'
 alias la='ls -a'
 alias l='ls -lha'
