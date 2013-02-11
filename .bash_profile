@@ -1,11 +1,7 @@
 
-platform='unknown'
-is_win=false
 if [[ "$OSTYPE" == 'msys' ]]; then
-  is_win=true
-fi
 
-if [[ $is_win ]]; then
+  echo "Loading windows msys conf"
 
   alias vim='gvim'
   alias vi='gvim'
@@ -66,11 +62,28 @@ if [[ $is_win ]]; then
 
   PATH=$PATH:$BINS:$BIN2:$PROGRAMS:.
 
+  # Prompt customizations
+
+  source $GIT_COMPLETION
+  # enable git unstaged indicators - set to a non-empty value
+  GIT_PS1_SHOWDIRTYSTATE="."
+  # enable showing of untracked files - set to a non-empty value
+  GIT_PS1_SHOWUNTRACKEDFILES="."
+  # enable stash checking - set to a non-empty value
+  GIT_PS1_SHOWSTASHSTATE="."
+  # enable showing of HEAD vs its upstream
+  GIT_PS1_SHOWUPSTREAM="auto"
+
+
 else
   
+  echo "Loading osx conf"
   # OSX
 
   alias vim='mvim'
+
+  # alias to nw
+  alias nw="/Applications/node-webkit.app/Contents/MacOS/node-webkit"
 
   #homebrew stuff
   export PATH=/usr/local/bin:/usr/local/sbin:$PATH
@@ -91,7 +104,7 @@ fi
 # Aliases
 #
 
-alias ls='ls --color'
+alias ls='ls -G'
 alias ll='ls -l'
 alias la='ls -a'
 alias l='ls -lha'
@@ -116,16 +129,4 @@ TERM=xterm-color
 
 # Enables color in the terminal bash shell export
 CLICOLOR=1
-
-# Prompt customizations
-
-source $GIT_COMPLETION
-# enable git unstaged indicators - set to a non-empty value
-GIT_PS1_SHOWDIRTYSTATE="."
-# enable showing of untracked files - set to a non-empty value
-GIT_PS1_SHOWUNTRACKEDFILES="."
-# enable stash checking - set to a non-empty value
-GIT_PS1_SHOWSTASHSTATE="."
-# enable showing of HEAD vs its upstream
-GIT_PS1_SHOWUPSTREAM="auto"
 
