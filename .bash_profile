@@ -59,6 +59,8 @@ if [[ $is_win ]]; then
   PROGRAMS=$PROGRAMS:$BIN2/love-0.8.0-win-x64
   PROGRAMS=$PROGRAMS:$BIN2/node-webkit-latest-win-ia32
 
+  PROGRAMS=$PROGRAMS:$BIN2/mongodb/bin
+
   PROGRAMS=$PROGRAMS:/d/devel/projects/git-based/js-beautify/python
   PROGRAMS=$PROGRAMS:/d/devel/projects/git-based/jessay/jessay
 
