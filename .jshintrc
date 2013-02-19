@@ -1,6 +1,8 @@
 {
     "globals": {
-      "asdf": false
+      "define": true,
+      "_": true,
+      "Backbone": true
     },
     "node" : true,
     "es5" : true,
