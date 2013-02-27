@@ -5,7 +5,7 @@ if [[ "$OSTYPE" == 'msys' ]]; then
 
   alias vim='gvim'
   alias vi='gvim'
-  
+
   # Env vars
   http_proxy=127.0.0.1:8888
   https_proxy=$http_proxy
@@ -76,7 +76,7 @@ if [[ "$OSTYPE" == 'msys' ]]; then
 
 
 else
-  
+
   echo "Loading osx conf"
   # OSX
 
@@ -120,7 +120,7 @@ alias c='clear'
 alias g='git'
 
 alias v='vim'
-alias v='vim .'
+alias v.='vim .'
 
 alias collapse="sed -e 's/  */ /g'"
 alias cuts="cut -d' '"
