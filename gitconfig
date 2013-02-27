@@ -11,11 +11,11 @@
   l = log --oneline --decorate
 
   dl = "!git ll -1"
-  dlc = diff --cached HEAD^
 
   la = "!git config -l | grep alias | cut -c 7-"
 
   lasttag = describe --tags --abbrev=0
+  who = shortlog -n -s --no-merges
 
   c = commit
   co = checkout
@@ -25,3 +25,10 @@
   b = branch
   d = diff --word-diff
   dc = diff --word-diff --cached
+  sh = show
+  a = add
+  aa = add -A
+  ps = push
+  pl = pull
+  pp = "!git pull && git push"
+
