@@ -1,0 +1,34 @@
+[color]
+	ui = true
+[core]
+	editor = vim
+[alias]
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --graph
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+  lds = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --graph --date=short
+  ld = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --graph --date=relative
+  l = log --oneline --decorate
+
+  dl = "!git ll -1"
+
+  la = "!git config -l | grep alias | cut -c 7-"
+
+  lasttag = describe --tags --abbrev=0
+  who = shortlog -n -s --no-merges
+
+  c = commit
+  co = checkout
+  cp = cherry-pick
+  s = status -s
+  st = status
+  b = branch
+  d = diff --word-diff
+  dc = diff --word-diff --cached
+  sh = show
+  a = add
+  aa = add -A
+  ps = push
+  pl = pull
+  pp = "!git pull && git push"
+
