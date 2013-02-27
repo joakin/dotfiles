@@ -60,6 +60,8 @@ if [[ "$OSTYPE" == 'msys' ]]; then
   PROGRAMS=$PROGRAMS:/d/devel/projects/git-based/js-beautify/python
   PROGRAMS=$PROGRAMS:/d/devel/projects/git-based/jessay/jessay
 
+  PROGRAMS=$PROGRAMS:$BIN2/haskell/2012.4.0.0/bin
+
   PATH=$PATH:$BINS:$BIN2:$PROGRAMS:.
 
   # Prompt customizations
