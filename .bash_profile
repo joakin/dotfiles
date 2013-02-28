@@ -1,6 +1,9 @@
 
 if [[ "$OSTYPE" == 'msys' ]]; then
 
+  # Git complains if we do not declare this
+  export TERM=msys
+
   echo "Loading windows msys conf"
 
   alias vim='gvim'
