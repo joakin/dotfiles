@@ -134,6 +134,7 @@ alias cuts="cut -d' '"
 #
 
 TERM=xterm-color
+EDITOR=vim
 
 # Enables color in the terminal bash shell export
 CLICOLOR=1
