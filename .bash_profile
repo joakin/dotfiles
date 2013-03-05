@@ -9,6 +9,8 @@ if [[ "$OSTYPE" == 'msys' ]]; then
   alias vim='gvim'
   alias vi='gvim'
 
+  SVN_EDITOR=vim
+
   # Env vars
   http_proxy=127.0.0.1:8888
   https_proxy=$http_proxy
