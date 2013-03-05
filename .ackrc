@@ -3,11 +3,11 @@
 --ignore-dir=vendor
 --ignore-dir=public
 --type-add
-html=.jst,.tpl,.jade,.hbs,.moustache
+html=.ejs,.jst,.tpl,.jade,.hbs,.moustache
 --type-add
-css=.sass,.less,.scss
+css=.sass,.less,.scss,.styl
 --type-add
-js=.coffee
+js=.coffee,.ls,.litcoffee,.coffee.md
 --type-add
 clojure=.cljs
 --type-set
