@@ -2,7 +2,9 @@
     "globals": {
       "define": true,
       "_": true,
-      "Backbone": true
+      "Backbone": true,
+      "describe": true,
+      "it": true
     },
     "node" : true,
     "es5" : true,
