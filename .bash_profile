@@ -141,3 +141,6 @@ EDITOR=vim
 # Enables color in the terminal bash shell export
 CLICOLOR=1
 
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000000
+
