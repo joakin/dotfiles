@@ -1,0 +1,34 @@
+#!/bin/bash
+
+if [ $# -lt 2 ] ; then
+    echo ""
+    echo "Execs cmd when files matching the pattern change"
+    echo ""
+    echo "Usage:"
+    echo "    $0 \"[cmd]\" \"[file_name_pattern]\""
+    echo "Example:"
+    echo "    onchange \"pwd\" \"\*.txt\""
+    exit 0
+fi
+
+command=$1
+fileSpec=$2
+sentinel=/tmp/t.$$
+
+touch -t197001010000 "$sentinel"
+
+xxx="find . -newer $sentinel -a -name $fileSpec"
+echo $xxx
+
+while :
+do
+  files=$(eval $xxx)
+  if [ $? != 0 ]; then
+    exit 1;
+  fi
+  if [ "$files" != "" ]; then
+    $command
+    touch $sentinel
+  fi
+  sleep 0.1
+done
