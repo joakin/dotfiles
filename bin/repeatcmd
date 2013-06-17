@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ $# -lt 2 ] ; then
+    echo ""
+    echo "Repeats the cmd each number of seconds"
+    echo ""
+    echo "Usage:"
+    echo "    $0 [seconds to wait] '[cmd]'"
+    exit 0
+fi
+
+while true
+do
+  $2
+  sleep $1
+done
+

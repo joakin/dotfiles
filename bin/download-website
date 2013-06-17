@@ -1,0 +1,3 @@
+#!/bin/bash
+
+wget --mirror --page-requisites --adjust-extension –-convert-links $1
