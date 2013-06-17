@@ -2,7 +2,7 @@
 echo "Loading osx conf"
 # OSX
 
-alias vim='mvim'
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 # alias to nw
 alias nw="/Applications/node-webkit.app/Contents/MacOS/node-webkit"
