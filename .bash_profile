@@ -3,6 +3,7 @@ echo "Loading osx conf"
 # OSX
 
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+# alias tmux="TERM=screen-256color-bce tmux"
 
 # alias to nw
 alias nw="/Applications/node-webkit.app/Contents/MacOS/node-webkit"
@@ -48,7 +49,6 @@ alias cuts="cut -d' '"
 # Vars
 #
 
-TERM=screen-256color
 EDITOR=vim
 VISUAL=vim
 
