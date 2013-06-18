@@ -3,7 +3,7 @@ echo "Loading osx conf"
 # OSX
 
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-# alias tmux="TERM=screen-256color-bce tmux"
+# alias tmux="TERM=screen-256color tmux"
 
 # alias to nw
 alias nw="/Applications/node-webkit.app/Contents/MacOS/node-webkit"
@@ -40,21 +40,24 @@ alias c='clear'
 
 alias g='git'
 
-alias v='vim'
-alias v.='vim .'
-
 alias collapse="sed -e 's/  */ /g'"
 alias cuts="cut -d' '"
 
 # Vars
 #
 
-EDITOR=vim
-VISUAL=vim
+export EDITOR=vim
+export VISUAL=vim
 
 # Enables color in the terminal bash shell export
-CLICOLOR=1
+export CLICOLOR=1
 
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000000
 
+eval "$(fasd --init auto)"
+
+alias v='a -e vim'
+alias o='a -e open'
+
+_fasd_bash_hook_cmd_complete v o
