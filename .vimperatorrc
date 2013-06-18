@@ -1,0 +1,35 @@
+"3.7 (created: 2013/04/03 18:20:07)
+
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+source! /Users/jkn/.vimperatorrc.local
+
+nnoremap , :
+vnoremap , :
+
+nnoremap zi zI
+nnoremap zI zi
+nnoremap zm zM
+nnoremap zM zm
+nnoremap zo zO
+nnoremap zO zo
+nnoremap zr zR
+nnoremap zR zr
+nnoremap zz zZ
+nnoremap zZ zz
+
+nnoremap y Y
+nnoremap Y y
+
+nnoremap <c-e> :tabgroups switch 
+
+nnoremap s :tabopen google 
+
+cnoremap <c-n> <down>
+cnoremap <c-p> <up>
+
+set editor='bash -lc "mvim -f \$*" mvim '
+
+set hlsearch
+
+
+" vim: set ft=vimperator:
