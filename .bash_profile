@@ -3,6 +3,8 @@ echo "Loading osx conf"
 # OSX
 
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias v.='vim .'
+alias vi='vim'
 # alias tmux="TERM=screen-256color tmux"
 
 # alias to nw
