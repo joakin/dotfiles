@@ -61,3 +61,4 @@ alias v='a -e vim'
 alias o='a -e open'
 
 _fasd_bash_hook_cmd_complete v o
+
