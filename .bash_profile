@@ -1,3 +1,4 @@
+[[ -s ~/.bashrc ]] && source ~/.bashrc
 
 echo "Loading osx conf"
 # OSX
