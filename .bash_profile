@@ -7,6 +7,7 @@ alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias v.='vim .'
 alias vi='vim'
 # alias tmux="TERM=screen-256color tmux"
+alias emacs='emacs -nw'
 
 # alias to nw
 alias nw="/Applications/node-webkit.app/Contents/MacOS/node-webkit"
