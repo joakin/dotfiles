@@ -19,6 +19,9 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 NODE_PATH=/usr/local/lib/node_modules
 export PATH=/usr/local/share/npm/bin:$PATH
 
+# Ruby shit
+export PATH=$PATH:/usr/local/opt/ruby/bin
+
 #lein stuff
 export PATH=$PATH:$HOME/.lein/bin
 
