@@ -31,5 +31,6 @@ set editor='bash -lc "mvim -f \$*" mvim '
 
 set hlsearch
 
+set gui=addons,nobookmarks,menu,nonavigation,tabs
 
 " vim: set ft=vimperator:
