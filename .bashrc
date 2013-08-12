@@ -44,6 +44,8 @@ elif [[ $UNAME == "Linux" ]]; then
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
 
+  alias open='xdg-open'
+
   # enable programmable completion features (you don't need to enable
   # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
   # sources /etc/bash.bashrc).
