@@ -20,3 +20,6 @@ alias l='ls -lha'
 alias rm='rm -i'
 
 alias g='git'
+
+set -g -x EDITOR vim
+
