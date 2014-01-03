@@ -1,37 +1,96 @@
 
-PS1BACKUP="\h:\W \u\$"
+source ~/.bash_prompt
 
-PATHCOLOR="\[\e[33m\]"
-HOSTCOLOR="\[\e[34m\]"
-PROMPTCOLOR="\[\e[37m\]"
-GITCOLOR="\[\e[36m\]"
-RESETCOLOR="\[\e[0;0m\]"
+export UNAME=$(uname)
 
-function load_git_prompt_shit
-{
-  GIT_PS1_SHOWDIRTYSTATE=true
-  GIT_PS1_SHOWSTASHSTATE=true
-  GIT_PS1_SHOWUNTRACKEDFILES=true
-  GIT_PS1_SHOWUPSTREAM="auto"
-  GIT_PS1_SHOWCOLORHINTS=true
-  source ~/bin/git-prompt
-}
-# load_git_prompt_shit
+if [[ $UNAME == "Darwin" ]]; then
+  echo "Loading osx conf"
 
-function local_prompt
-{
-# $GITCOLOR$(__git_ps1 "(%s) ")$RESETCOLOR\
+  alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
-  PS1BASE="$PATHCOLOR\W$RESETCOLOR \
-$PROMPTCOLOR\$$RESETCOLOR "
+  # alias to nw
+  alias nw="/Applications/node-webkit.app/Contents/MacOS/node-webkit"
 
-  PS1=$PS1BASE
-}
+  #homebrew stuff
+  export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-function remote_prompt
-{
-  PS1="$HOSTCOLOR\u@\h $PS1"
-}
+  #npm bins
+  NODE_PATH=/usr/local/lib/node_modules
+  export PATH=/usr/local/share/npm/bin:$PATH
 
-local_prompt
+  # Ruby shit
+  export PATH=$PATH:/usr/local/opt/ruby/bin
+
+  #lein stuff
+  export PATH=$PATH:$HOME/.lein/bin
+
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+
+  eval "$(fasd --init auto)"
+
+  alias v='a -e vim'
+  alias o='a -e open'
+  alias ls='ls -G'
+
+  _fasd_bash_hook_cmd_complete v o
+
+elif [[ $UNAME == "Linux" ]]; then
+  echo "Loading linux conf"
+
+  alias ls='ls --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+
+  alias open='xdg-open'
+
+  # enable programmable completion features (you don't need to enable
+  # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+  # sources /etc/bash.bashrc).
+  if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+      . /etc/bash_completion
+  fi
+fi
+
+
+#my scripts
+export PATH=~/bin:$PATH
+
+# Aliases
+#
+
+alias v.='vim .'
+alias vi='vim'
+alias emacs='emacs -nw'
+
+alias ll='ls -l'
+alias la='ls -a'
+alias l='ls -lha'
+
+alias rm='rm -i'
+
+alias serve_this='python -m SimpleHTTPServer'
+alias c='clear'
+
+alias g='git'
+
+alias collapse="sed -e 's/  */ /g'"
+alias cuts="cut -d' '"
+
+# Vars
+#
+
+export EDITOR=vim
+export VISUAL=vim
+
+# Enables color in the terminal bash shell export
+export CLICOLOR=1
+
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000000
+
+# export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu' -c 'nnoremap i <nop>' -"
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 

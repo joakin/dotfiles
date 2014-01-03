@@ -1,0 +1,6 @@
+#!/bin/bash
+
+CMD="download-website --mirror $*"
+
+${CMD}
+
