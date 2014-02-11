@@ -18,7 +18,7 @@
     "latedef": true,
     "newcap": true,
     "noarg": true,
-    "quotmark": "single",
+    "quotmark": "true",
     "undef": true,
     "unused": true,
     "trailing": true,
