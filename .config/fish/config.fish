@@ -16,6 +16,7 @@ alias ls='ls -G'
 alias ll='ls -l'
 alias la='ls -a'
 alias l='ls -lha'
+alias t='tree'
 
 alias rm='rm -i'
 

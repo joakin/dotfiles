@@ -79,6 +79,9 @@ alias g='git'
 alias collapse="sed -e 's/  */ /g'"
 alias cuts="cut -d' '"
 
+alias rlwrap2="rlwrap -r -m \"\" -q '\\\"' -b \"(){}[],^%3@\\\";:'\""
+alias cljs-node-repl="lein trampoline noderepl"
+
 # Vars
 #
 
