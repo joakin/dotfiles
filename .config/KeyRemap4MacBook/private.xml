@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Remap Command_R to Hyper (ctrl+option+command+shift)</name>
+    <appendix>This maps Command_R to Control + Shift + Option + Command.</appendix>
+
+    <identifier>command_right_to_hyper</identifier>
+
+    <autogen>
+      --KeyToKey--
+      KeyCode::COMMAND_R,
+
+      KeyCode::COMMAND_L,
+      ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
+    </autogen>
+  </item>
+  <item>
+    <name>Remap Alt_R to Hyper2 (ctrl+option+command)</name>
+    <appendix>This maps Alt_R to Control + Option + Command.</appendix>
+
+    <identifier>alt_right_to_hyper</identifier>
+
+    <autogen>
+      --KeyToKey--
+      KeyCode::OPTION_R,
+
+      KeyCode::COMMAND_L,
+      ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L
+    </autogen>
+  </item>
+</root>
