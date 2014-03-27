@@ -1,0 +1,55 @@
+;; User behaviors
+;; -----------------------------
+;; Behaviors are added to tags, objects with those tags then automatically gain
+;; whatever logic the behavior imparts. To see a list of user-level behaviors,
+;; start typing a word related to the functionality you want in between the square
+;; brackets (e.g. "theme").
+
+{:+ {
+     ;; The app tag is kind of like global scope. You assign behaviors that affect
+     ;; all of Light Table here
+     :app [(:lt.objs.style/set-skin "dark")
+           :lt.objs.sidebar.workspace/workspace.open-on-start
+           :lt.objs.deploy/check-version
+           :lt.plugins.auto-complete/auto-show-on-input
+           :lt.plugins.jshint/on-save
+           :lt.objs.editor.file/remove-trailing-whitespace]
+
+     ;; The editor tag is applied to all editors
+     :editor [(:lt.objs.style/set-theme "borealis")
+
+;;               (:lt.objs.style/font-settings "Andale Mono" 11 1.4)
+              (:lt.objs.style/font-settings "Onuava" 14 1.5)
+
+              :lt.objs.editor/scroll-past-end
+              :lt.objs.editor/highlight-current-line
+              :lt.plugins.vim/activate-vim
+              (:lt.plugins.vim/map-keys {"K" ":ltexec editor.doc.toggle"
+                                         "L" "$"
+                                         "H" "^"
+                                         "j" "gj"
+                                         "k" "gk"
+;;                                          "[<Space>" "I<cr><esc>"
+                                         "k" "gk"
+                                         "gt" ":ltexec tabs.next"
+                                         "gT" ":ltexec tabs.prev"
+                                         "gc" ":ltexec toggle-comment-selection"
+                                         "<Space>sw" ":ltexec toggle-visible-whitespace"
+                                         "<Space>w" ":ltexec save"
+                                         "<Space>q" ":ltexec vim-quit"
+                                         })
+              ]
+
+     :editor.clojure [(:lt.objs.langs.clj/print-length 1000)]
+     :editor.javascript [:lt.plugins.jshint/on-save]
+
+     :lt.plugins.opener/settings [(:lt.plugins.opener/set-shell-command
+                                   :terminal
+                                   :mac
+                                   ["open" "-a" "iTerm" "{{path}}"])]
+     }
+
+
+ ;; You can use the subtract key to remove behavior that may get added by
+ ;; another diff
+ :- {:app [:lt.objs.intro/show-intro]}}
