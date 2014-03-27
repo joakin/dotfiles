@@ -6,7 +6,7 @@ export UNAME=$(uname)
 if [[ $UNAME == "Darwin" ]]; then
   echo "Loading osx conf"
 
-  alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+  # alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
   # alias to nw
   alias nw="/Applications/node-webkit.app/Contents/MacOS/node-webkit"
