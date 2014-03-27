@@ -1,31 +1,59 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>Remap Command_R to Hyper (ctrl+option+command+shift)</name>
-    <appendix>This maps Command_R to Control + Shift + Option + Command.</appendix>
+    <name>Remap Command_R to mod1 (option+shift)</name>
+    <appendix>This maps Command_R to Shift + Option</appendix>
 
-    <identifier>command_right_to_hyper</identifier>
+    <identifier>amethyst.command_right_to_mod1</identifier>
 
     <autogen>
       --KeyToKey--
       KeyCode::COMMAND_R,
 
-      KeyCode::COMMAND_L,
-      ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
+      KeyCode::OPTION_R,
+      ModifierFlag::SHIFT_L
     </autogen>
   </item>
   <item>
-    <name>Remap Alt_R to Hyper2 (ctrl+option+command)</name>
-    <appendix>This maps Alt_R to Control + Option + Command.</appendix>
+    <name>Remap Alt_R to mod2 (option+ctrl+shift)</name>
+    <appendix>This maps Alt_R to Shift + Ctrl + Option</appendix>
 
-    <identifier>alt_right_to_hyper</identifier>
+    <identifier>amethyst.alt_right_to_mod2</identifier>
 
     <autogen>
       --KeyToKey--
       KeyCode::OPTION_R,
 
-      KeyCode::COMMAND_L,
-      ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L
+      KeyCode::OPTION_R,
+      ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
+    </autogen>
+  </item>
+  <item>
+    <name>Remap Alt_R to mod1 (option+shift)</name>
+    <appendix>This maps Alt_R to Shift + Option</appendix>
+
+    <identifier>amethyst.alt_right_to_mod1</identifier>
+
+    <autogen>
+      --KeyToKey--
+      KeyCode::OPTION_R,
+
+      KeyCode::OPTION_R,
+      ModifierFlag::SHIFT_L
+    </autogen>
+  </item>
+  <item>
+    <name>Remap Command_R to mod2 (option+ctrl+shift)</name>
+    <appendix>This maps Command_R to Shift + Ctrl + Option</appendix>
+
+    <identifier>amethyst.command_right_to_mod2</identifier>
+
+    <autogen>
+      --KeyToKey--
+      KeyCode::COMMAND_R,
+
+      KeyCode::OPTION_R,
+      ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
     </autogen>
   </item>
 </root>
