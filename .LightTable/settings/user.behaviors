@@ -18,8 +18,9 @@
      ;; The editor tag is applied to all editors
      :editor [(:lt.objs.style/set-theme "borealis")
 
+              (:lt.objs.style/font-settings "Monaco" 16 1.5)
 ;;               (:lt.objs.style/font-settings "Andale Mono" 11 1.4)
-              (:lt.objs.style/font-settings "Onuava" 14 1.5)
+;;               (:lt.objs.style/font-settings "Onuava" 14 1.5)
 
               :lt.objs.editor/scroll-past-end
               :lt.objs.editor/highlight-current-line
@@ -52,4 +53,6 @@
 
  ;; You can use the subtract key to remove behavior that may get added by
  ;; another diff
- :- {:app [:lt.objs.intro/show-intro]}}
+ :- {:app [:lt.objs.intro/show-intro]
+     :editor [:lt.plugins.auto-complete/auto-show-on-input]
+     }}
