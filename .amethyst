@@ -1,6 +1,3 @@
 {
-  "# default.amethyst.json": "https://raw.githubusercontent.com/ianyh/Amethyst/master/Amethyst/default.amethyst"
-
-  "floating": [ "com.apple.systempreferences" ],
   "mouse-follows-focus": true
 }
