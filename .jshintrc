@@ -8,6 +8,7 @@
     },
     "node" : true,
     "es5" : true,
+    "esnext" : true,
     "browser" : true,
     "devel": false,
     "jquery": true,
