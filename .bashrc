@@ -69,7 +69,7 @@ alias ll='ls -l'
 alias la='ls -a'
 alias l='ls -lha'
 
-alias rm='rm -i'
+# alias rm='rm -i'
 
 alias serve_this='python -m SimpleHTTPServer'
 alias c='clear'
