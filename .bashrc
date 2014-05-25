@@ -1,6 +1,4 @@
 
-source ~/.bash_prompt
-
 export UNAME=$(uname)
 
 if [[ $UNAME == "Darwin" ]]; then
@@ -39,10 +37,11 @@ if [[ $UNAME == "Darwin" ]]; then
 elif [[ $UNAME == "Linux" ]]; then
   echo "Loading linux conf"
 
-  alias ls='ls --color=auto'
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
+  source ~/.bashrc.ubuntu
+
+  case "$TERM" in
+    xterm*) TERM=xterm-256color
+  esac
 
   alias open='xdg-open'
 
@@ -53,6 +52,8 @@ elif [[ $UNAME == "Linux" ]]; then
       . /etc/bash_completion
   fi
 fi
+
+source ~/.bash_prompt
 
 
 #my scripts
