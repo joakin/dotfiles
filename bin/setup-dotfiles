@@ -9,7 +9,6 @@ ln_cfg .config ~/.config
 ln_cfg bin ~/bin
 
 ln_cfg .ackrc ~/.ackrc
-ln_cfg .amethyst ~/.amethyst
 ln_cfg .bash_profile ~/.bash_profile
 ln_cfg .bash_prompt ~/.bash_prompt
 ln_cfg .bashrc ~/.bashrc
@@ -18,16 +17,16 @@ ln_cfg .jsbeautifyrc ~/.jsbeautifyrc
 ln_cfg .jshintrc ~/.jshintrc
 ln_cfg .tmux.conf ~/.tmux.conf
 ln_cfg .vimperatorrc ~/.vimperatorrc
-ln_cfg .vimperatorrc ~/.vimperatorrc
 
-# git clone git@github.com:joakin/.vim.git ~/.vim
 # mv -v ~/.vim ~/.vim.bak
+# git clone git@github.com:joakin/.vim.git ~/.vim
 # ln -sv ~/.vim/.vimrc ~/.vimrc
 # git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 # vim +PluginInstall +qall
 
 if [[ $UNAME == "Darwin" ]]; then
 
+  ln_cfg .amethyst ~/.amethyst
   ln_cfg .LightTable/settings ~/Library/Application\ Support/LightTable/settings
   ln_cfg .KeyRemap4MacBook ~/Library/Application\ Support/KeyRemap4MacBook
 
