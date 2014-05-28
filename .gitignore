@@ -1,1 +1,15 @@
 .config/levelmeup
+.config/Mousepad/
+.config/Thunar/
+.config/abiword/
+.config/dconf/
+.config/enchant/
+.config/gmusicbrowser/
+.config/pulse/
+.config/software-center/
+.config/update-notifier/
+.config/user-dirs.dirs
+.config/user-dirs.locale
+.config/chromium/
+.config/configstore/
+
