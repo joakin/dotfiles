@@ -17,7 +17,8 @@
      ;; The editor tag is applied to all editors
      :editor [(:lt.objs.style/set-theme "borealis")
 
-              (:lt.objs.style/font-settings "Menlo" 14 1.5)
+              (:lt.objs.style/font-settings "monoOne" 16 1.5)
+;;               (:lt.objs.style/font-settings "Menlo" 14 1.5)
 ;;               (:lt.objs.style/font-settings "Edlo" 14 1.5)
 ;;               (:lt.objs.style/font-settings "Andale Mono" 15 1.4)
 ;;               (:lt.objs.style/font-settings "Onuava" 14 1.5)
