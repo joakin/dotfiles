@@ -11,3 +11,11 @@
 .config/user-dirs.locale
 .config/chromium/
 .config/configstore/
+.config/Trolltech.conf
+.config/autostart/
+.config/font-manager/
+.config/fontconfig/
+.config/fontgroups.xml
+.config/gtk-2.0/
+.config/transmission/
+.config/vlc/
