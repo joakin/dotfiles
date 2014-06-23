@@ -1,8 +1,12 @@
 #!/bin/bash
 
 ln_cfg () {
-  mv -v $2 ${2}.bak
-  ln -sv ~/dotfiles/$1 $2
+  if [ -a "$2" ]
+  then
+    echo "File $2 already exists. Skipping."
+  else
+    ln -sv ~/dotfiles/$1 $2
+  fi
 }
 
 ln_cfg .config ~/.config
@@ -17,12 +21,44 @@ ln_cfg .jsbeautifyrc ~/.jsbeautifyrc
 ln_cfg .jshintrc ~/.jshintrc
 ln_cfg .tmux.conf ~/.tmux.conf
 ln_cfg .vimperatorrc ~/.vimperatorrc
+ln_cfg .gitignore_global ~/.gitignore_global
 
-# mv -v ~/.vim ~/.vim.bak
-# git clone git@github.com:joakin/.vim.git ~/.vim
-# ln -sv ~/.vim/.vimrc ~/.vimrc
-# git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-# vim +PluginInstall +qall
+APPEND_GITCONFIG=false
+if [ -a ~/.gitconfig ]
+then
+  echo "Git config exists:"
+  echo
+  cat ~/.gitconfig
+  echo
+  read -p "Do you want to append dotfiles/gitconfig to it?" -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    APPEND_GITCONFIG=true
+  fi
+else
+  echo ".gitconfig does not exist. Creating one"
+  APPEND_GITCONFIG=true
+  touch ~/.gitconfig
+fi
+if [ "$APPEND_GITCONFIG" = true ]; then
+  cat ~/dotfiles/gitconfig >> ~/.gitconfig
+else
+  echo "Skipping .gitconfig"
+fi
+
+if [ -a ~/.vim ]
+then
+  echo ".vim already exists. Skipping."
+else
+  git clone git@github.com:joakin/.vim.git ~/.vim
+  if [ -a ~/.vimrc ]
+  then
+    ln -sv ~/.vim/.vimrc ~/.vimrc
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    vim +PluginInstall +qall
+  fi
+fi
 
 if [[ $UNAME == "Darwin" ]]; then
 
