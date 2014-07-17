@@ -83,6 +83,8 @@ alias cuts="cut -d' '"
 alias rlwrap2="rlwrap -r -m \"\" -q '\\\"' -b \"(){}[],^%3@\\\";:'\""
 alias cljs-node-repl="lein trampoline noderepl"
 
+alias t='tree -L 1'
+
 # Vars
 #
 
