@@ -85,6 +85,8 @@ alias cljs-node-repl="lein trampoline noderepl"
 
 alias t='tree -L 1'
 
+alias renamephotos='jhead -autorot -n%Y%m%d-%H%M%S-%f '
+
 # Vars
 #
 
