@@ -1,0 +1,16 @@
+#!/bin/sh
+
+IFS=$'\n\t'
+
+if [ $# -ne 2 ] ; then
+    echo "$#"
+    echo "Make gif from [glob] into [dest]"
+    echo ""
+    echo "Usage:"
+    echo "    $0 \"[glob-source-images]\" [dest-gif]"
+    echo "Example:"
+    echo "    $0 \"*.png\" fun.gif"
+    exit 0
+fi
+
+convert -delay 35 -loop 0 $1 $2
