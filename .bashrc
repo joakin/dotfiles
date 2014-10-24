@@ -106,3 +106,10 @@ export HISTFILESIZE=1000000000
 # export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu' -c 'nnoremap i <nop>' -"
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
+# node
+export PATH=$PATH:./node_modules/.bin/
+
+# Wikimedia stuff
+export GERRIT_USERNAME=Jhernandez
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
