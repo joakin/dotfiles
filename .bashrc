@@ -83,6 +83,7 @@ alias serve_this='python -m SimpleHTTPServer'
 alias c='clear'
 
 alias g='git'
+__git_complete g __git_main
 
 alias collapse="sed -e 's/  */ /g'"
 alias cuts="cut -d' '"
