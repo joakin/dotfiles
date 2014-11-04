@@ -26,6 +26,8 @@ if [[ $UNAME == "Darwin" ]]; then
     . $(brew --prefix)/etc/bash_completion
   fi
 
+  source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+
   eval "$(fasd --init auto)"
 
   alias v='a -e vim'
@@ -55,6 +57,7 @@ elif [[ $UNAME == "Linux" ]]; then
   if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
       . /etc/bash_completion
   fi
+  source ~/bin/git-prompt
 fi
 
 source ~/.bash_prompt

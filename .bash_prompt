@@ -14,16 +14,16 @@ function load_git_prompt_shit
   GIT_PS1_SHOWUNTRACKEDFILES=true
   GIT_PS1_SHOWUPSTREAM="auto"
   GIT_PS1_SHOWCOLORHINTS=true
-  source ~/bin/git-prompt
 }
-# load_git_prompt_shit
+load_git_prompt_shit
 
 function local_prompt
 {
-# $GITCOLOR$(__git_ps1 "(%s) ")$RESETCOLOR\
+  # $GITCOLOR$(__git_ps1 "(%s) ")$RESETCOLOR\
 
-  PS1BASE="$PATHCOLOR\W$RESETCOLOR \
-$PROMPTCOLOR\$$RESETCOLOR "
+  PS1BASE="$PATHCOLOR\W$RESETCOLOR"
+  PS1BASE+="$GITCOLOR \$(__git_ps1 \"(%s) \")$RESETCOLOR"
+  PS1BASE+="$PROMPTCOLOR\$$RESETCOLOR "
 
   PS1=$PS1BASE
 }
