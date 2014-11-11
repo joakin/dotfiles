@@ -36,4 +36,7 @@
   ps = push
   pl = pull
   pp = "!git pull && git push"
+  fa = fetch --all
+  r = review
+  rn = review --no-custom-script
 

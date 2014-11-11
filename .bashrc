@@ -115,5 +115,8 @@ export PATH=$PATH:./node_modules/.bin/
 
 # Wikimedia stuff
 export GERRIT_USERNAME=Jhernandez
+alias gerrit='dev-scripts/remotes/gerrit.py'
+alias gerrit-review='gerrit --gtscore -1 --ignorepattern "WIP"'
+alias gerrit-mine="gerrit --byuser $GERRIT_USERNAME"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
