@@ -116,7 +116,13 @@ export PATH=$PATH:./node_modules/.bin/
 # Wikimedia stuff
 export GERRIT_USERNAME=Jhernandez
 alias gerrit='dev-scripts/remotes/gerrit.py'
-alias gerrit-review='gerrit --gtscore -1 --ignorepattern "WIP"'
-alias gerrit-mine="gerrit --byuser $GERRIT_USERNAME"
+alias gerritreview='gerrit --gtscore -1 --ignorepattern "WIP"'
+alias gerritmine="gerrit --byuser $GERRIT_USERNAME"
+# Wikimedia Cucumber vars
+export MEDIAWIKI_API_URL=http://127.0.0.1:8080/w/api.php
+export MEDIAWIKI_USER=Selenium_user
+export MEDIAWIKI_PASSWORD=vagrant
+export MEDIAWIKI_URL=http://127.0.0.1:8080/wiki/
+export BROWSER=phantomjs
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -39,4 +39,8 @@
   fa = fetch --all
   r = review
   rn = review --no-custom-script
+  far = "!git fetch --all && git review"
+
+  remove-merged-branches-with-master = "!git branch --merged master | grep -v \"\\* master\" | xargs -n 1 git branch -d"
+  remove-review-branches = "!git branch | grep \"review/*\" | xargs -n 1 git branch -D"
 
