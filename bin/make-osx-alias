@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ $# -lt 2 ] ; then
+    echo ""
+    echo "Make OSX alias"
+    echo ""
+    echo "Usage:"
+    echo "    $0 real_path dest_folder"
+    exit 0
+fi
+
+osascript <<END
+
+  set path to POSIX file "$1"
+  set folder to POSIX file "$2"
+
+  tell application "Finder"
+    make alias file to path at folder
+  end tell
+
+END
