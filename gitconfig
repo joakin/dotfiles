@@ -21,7 +21,8 @@
   lasttag = describe --tags --abbrev=0
   who = shortlog -n -s --no-merges
 
-  c = commit
+  c = commit -v
+  ca = commit -v --amend
   co = checkout
   cp = cherry-pick
   s = status -s
@@ -40,6 +41,7 @@
   r = review
   rn = review --no-custom-script
   far = "!git fetch --all && git review"
+  farn = "!git fetch --all && git review --no-custom-script"
 
   remove-merged-branches-with-master = "!git branch --merged master | grep -v \"\\* master\" | xargs -n 1 git branch -d"
   remove-review-branches = "!git branch | grep \"review/*\" | xargs -n 1 git branch -D"
