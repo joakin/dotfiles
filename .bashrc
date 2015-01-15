@@ -113,7 +113,7 @@ export HISTFILESIZE=1000000000
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 # node
-export PATH=./node_modules/.bin/:$PATH
+export PATH=./node_modules/.bin:$PATH
 
 # Wikimedia stuff
 export GERRIT_USERNAME=Jhernandez
