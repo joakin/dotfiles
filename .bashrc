@@ -95,6 +95,8 @@ alias t='tree -L 1'
 
 alias renamephotos='jhead -autorot -n%Y%m%d-%H%M%S-%f '
 
+alias today='date +%Y-%m-%d'
+
 # Vars
 #
 
