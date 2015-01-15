@@ -128,5 +128,7 @@ export MEDIAWIKI_URL=http://127.0.0.1:8080/wiki/
 export BROWSER=phantomjs
 # MF jsduck and others
 export MW_INSTALL_PATH=/Users/jhernandez/dev/wikimedia/vagrant-2014-12-15/mediawiki
+# grunt qunit debugging, default to true (readable tests)
+export QUNIT_DEBUG=true
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
