@@ -102,6 +102,8 @@ alias renamephotos='jhead -autorot -n%Y%m%d-%H%M%S-%f '
 
 alias today='date +%Y-%m-%d'
 
+alias node-repl='NODE_NO_READLINE=1 rlwrap -p green node'
+
 # Vars
 #
 
@@ -123,7 +125,7 @@ export PATH=./node_modules/.bin:$PATH
 # Wikimedia stuff
 export GERRIT_USERNAME=Jhernandez
 alias gerrit='dev-scripts/remotes/gerrit.py'
-alias gerritreview='gerrit --gtscore -1 --ignorepattern "WIP"'
+alias gerritreview="gerrit --gtscore -1 --ignorepattern \"WIP\" --excludeuser $GERRIT_USERNAME"
 alias gerritmine="gerrit --byuser $GERRIT_USERNAME"
 # Wikimedia Cucumber vars
 export MEDIAWIKI_API_URL=http://127.0.0.1:8080/w/api.php

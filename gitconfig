@@ -38,6 +38,7 @@
   pl = pull
   pp = "!git pull && git push"
   fa = fetch --all
+  plfa = "!git fetch --all && git pull"
   r = review
   rn = review --no-custom-script
   far = "!git fetch --all && git review"
