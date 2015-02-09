@@ -36,6 +36,11 @@ if [[ $UNAME == "Darwin" ]]; then
 
   _fasd_bash_hook_cmd_complete v o
 
+  # OSX Docker stuff
+  export DOCKER_TLS_VERIFY=1
+  export DOCKER_HOST=tcp://192.168.59.103:2376
+  export DOCKER_CERT_PATH=/Users/jhernandez/.boot2docker/certs/boot2docker-vm
+
 elif [[ $UNAME == "Linux" ]]; then
   echo "Loading linux conf"
 
