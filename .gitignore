@@ -20,3 +20,5 @@
 .config/gtk-2.0/
 .config/transmission/
 .config/vlc/
+.config/expressworks/
+.config/introtowebgl/
