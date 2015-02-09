@@ -9,10 +9,10 @@ if [[ $UNAME == "Darwin" ]]; then
   # alias to nw
   alias nw="/Applications/node-webkit.app/Contents/MacOS/node-webkit"
 
-  #homebrew stuff
+  # homebrew stuff
   export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-  #npm bins
+  # npm bins
   NODE_PATH=/usr/local/lib/node_modules
   export PATH=/usr/local/share/npm/bin:$PATH
 
