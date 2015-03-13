@@ -7,6 +7,16 @@ if [ $# -lt 2 ] ; then
     echo ""
     echo "Usage:"
     echo "    $0 [pattern-to-substitute] [replacement-pattern]"
+    echo ""
+    echo "Example:"
+    echo "    $0  'VID_\(.*\)\.mp4' '\1_VID.mp4'"
+    echo "     ..."
+    echo "     VID_20140804_162626.mp4 -> 20140804_162626_VID.mp4"
+    echo "     VID_20140921_142215.mp4 -> 20140921_142215_VID.mp4"
+    echo "     VID_20140921_142314.mp4 -> 20140921_142314_VID.mp4"
+    echo "     ..."
+    echo ""
+
     exit 0
 fi
 
@@ -15,10 +25,10 @@ do
     if [ ! -f $x ]; then
         continue
     fi
-    
-    lc=`echo $x | sed -e "s/$1/$2/g"`
-    if [ $lc != $x ]; then
-        mv -iv $x $lc
+
+    NEW_NAME=`echo $x | sed -e "s/$1/$2/g"`
+    if [ $NEW_NAME != $x ]; then
+        mv -iv $x $NEW_NAME
     fi
 done
 
