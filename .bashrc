@@ -30,8 +30,8 @@ if [[ $UNAME == "Darwin" ]]; then
 
   eval "$(fasd --init auto)"
 
-  alias v='a -e vim'
-  alias o='a -e open'
+  alias v='a -i -e vim'
+  alias o='a -i -e open'
   alias ls='ls -G'
 
   _fasd_bash_hook_cmd_complete v o
@@ -124,9 +124,8 @@ export PATH=./node_modules/.bin:$PATH
 
 # Wikimedia stuff
 export GERRIT_USERNAME=Jhernandez
-alias gerrit='dev-scripts/remotes/gerrit.py'
-alias gerritreview="gerrit --gtscore -1 --ignorepattern \"WIP\" --excludeuser $GERRIT_USERNAME"
-alias gerritmine="gerrit --byuser $GERRIT_USERNAME"
+alias gerritr="gerrit --gtscore -1 --ignorepattern \"WIP\" --excludeuser $GERRIT_USERNAME"
+alias gerritm="gerrit --byuser $GERRIT_USERNAME"
 # Wikimedia Cucumber vars
 export MEDIAWIKI_API_URL=http://127.0.0.1:8080/w/api.php
 export MEDIAWIKI_USER=Selenium_user
