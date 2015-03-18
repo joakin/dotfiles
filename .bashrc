@@ -104,6 +104,8 @@ alias today='date +%Y-%m-%d'
 
 alias node-repl='NODE_NO_READLINE=1 rlwrap -p green node'
 
+alias fuck='figlet -t -f broadway fuck '
+
 # Vars
 #
 
