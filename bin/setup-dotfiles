@@ -22,6 +22,7 @@ ln_cfg .jshintrc ~/.jshintrc
 ln_cfg .tmux.conf ~/.tmux.conf
 ln_cfg .vimperatorrc ~/.vimperatorrc
 ln_cfg .gitignore_global ~/.gitignore_global
+ln_cfg .agignore ~/.agignore
 
 APPEND_GITCONFIG=false
 if [ -a ~/.gitconfig ]
