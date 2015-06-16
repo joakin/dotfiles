@@ -30,8 +30,6 @@ if [[ $UNAME == "Darwin" ]]; then
 
   eval "$(fasd --init auto)"
 
-  alias v='a -i -e vim'
-  alias o='a -i -e open'
   alias ls='ls -G'
 
   _fasd_bash_hook_cmd_complete v o
