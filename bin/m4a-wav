@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for i in *.m4a; do
+  ffmpeg -i $i ${i%%.*}.wav
+done
