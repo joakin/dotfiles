@@ -3,7 +3,7 @@ PS1BACKUP="\h:\W \u\$"
 
 PATHCOLOR="\[\e[33m\]"
 HOSTCOLOR="\[\e[34m\]"
-PROMPTCOLOR="\[\e[37m\]"
+PROMPTCOLOR="\[\e[36m\]"
 GITCOLOR="\[\e[36m\]"
 RESETCOLOR="\[\e[0;0m\]"
 
