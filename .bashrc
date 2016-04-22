@@ -76,8 +76,10 @@ export PATH=~/bin:$PATH
 # Aliases
 #
 
+alias v='vim'
 alias v.='vim .'
 alias vi='vim'
+alias n='nvim'
 alias emacs='emacs -nw'
 
 alias ll='ls -l'
@@ -137,8 +139,10 @@ export MEDIAWIKI_PASSWORD=vagrant
 export MEDIAWIKI_URL=http://127.0.0.1:8080/wiki/
 export BROWSER=phantomjs
 # MF jsduck and others
-export MW_INSTALL_PATH=/Users/jhernandez/dev/wikimedia/mediawiki
+export MW_INSTALL_PATH=/Users/jhernandez/dev/wikimedia/mediawiki-vagrant/mediawiki
 # grunt qunit debugging, default to true (readable tests)
 export QUNIT_DEBUG=true
+export MW_SERVER='http://localhost:8080'
+export MW_SCRIPT_PATH='/w'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
