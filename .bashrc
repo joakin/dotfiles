@@ -22,6 +22,10 @@ if [[ $UNAME == "Darwin" ]]; then
   #lein stuff
   export PATH=$PATH:$HOME/.lein/bin
 
+  #rust stuff
+  export PATH=$PATH:$HOME/.cargo/bin
+  export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib
+
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
   fi
