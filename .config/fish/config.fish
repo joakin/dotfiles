@@ -6,11 +6,8 @@ set -g -x PATH /usr/local/share/npm/bin $PATH
 set -g -x PATH ~/.lein/bin $PATH
 set -g -x PATH ~/bin $PATH
 
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias vim='/usr/local/bin/vim'
 alias vi='vim'
-
-# alias to nw
-alias nw="/Applications/node-webkit.app/Contents/MacOS/node-webkit"
 
 alias ls='ls -G'
 alias ll='ls -l'
