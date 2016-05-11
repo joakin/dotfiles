@@ -1,0 +1,6 @@
+#!/bin/bash
+
+tic ~/dotfiles/xterm-256color-italic.terminfo
+echo 'Set "Report Terminal Type" to xterm-256color-italic,'
+echo 'Then restart the terminal and try this out:'
+echo '  echo `tput sitm`italics`tput ritm`'
