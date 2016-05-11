@@ -4,8 +4,6 @@ source ~/.config/bash/colors.sh
 export UNAME=$(uname)
 
 if [[ $UNAME == "Darwin" ]]; then
-  echo "Loading osx conf"
-
   # alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
   # alias to nw
@@ -46,8 +44,6 @@ if [[ $UNAME == "Darwin" ]]; then
   export DOCKER_CERT_PATH=/Users/jhernandez/.boot2docker/certs/boot2docker-vm
 
 elif [[ $UNAME == "Linux" ]]; then
-  echo "Loading linux conf"
-
   source ~/.bashrc.ubuntu
 
   case "$TERM" in
