@@ -1,7 +1,5 @@
 
-# Base16 Shell colors
-BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+source ~/.config/bash/colors.sh
 
 export UNAME=$(uname)
 
