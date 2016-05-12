@@ -2,6 +2,7 @@
   ui = true
 [core]
   editor = vim
+  excludesfile = /Users/jkn/.gitignore_global
 [merge]
   tool = vimdiff
 [diff]
