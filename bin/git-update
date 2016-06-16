@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [[ -z "$1" ]]; then
+    echo "Usage: $FUNCNAME <dir>" >&2
+    return 1
+fi
+
+if [[ ! -d "$1" ]]; then
+    echo "Invalid dir specified: '${1}'"
+    return 1
+fi
+
+# Subshell so we don't end up in a different dir than where we started.
+(
+    cd "$1"
+    for sub in *; do
+        [[ -d "${sub}/.git" ]] || continue
+        echo ""
+        echo "${sub}"
+        echo " =========="
+        # Subshell so we don't end up in a different dir than where we started.
+        (
+            cd "${sub}"
+            git checkout master
+            git fetch --all
+            git pull
+        )
+    done
+)
