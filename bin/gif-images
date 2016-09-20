@@ -1,5 +1,5 @@
-#!/bin/sh
-
+#!/bin/bash
+set -euo pipefail
 IFS=$'\n\t'
 
 if [ $# -ne 2 ] ; then
@@ -13,4 +13,4 @@ if [ $# -ne 2 ] ; then
     exit 0
 fi
 
-convert -delay 35 -loop 0 $1 $2
+convert -delay 35 -loop 0 "$1" "$2"

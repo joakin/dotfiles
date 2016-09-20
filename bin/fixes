@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
 
-ag "FIX|XXX|HACK|OPTIMIZE" $*
+ag "FIX|XXX|HACK|OPTIMIZE" "$@"
 

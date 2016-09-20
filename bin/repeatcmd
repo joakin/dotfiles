@@ -12,6 +12,6 @@ fi
 while true
 do
   $2
-  sleep $1
+  sleep "$1"
 done
 

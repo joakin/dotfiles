@@ -1,7 +1,9 @@
 #!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
 
 if [[ -z "$1" ]]; then
-    echo "Usage: $FUNCNAME <dir>" >&2
+    echo "Usage: ${FUNCNAME[0]} <dir>" >&2
     return 1
 fi
 

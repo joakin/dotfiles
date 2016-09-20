@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
 
 tic ~/dotfiles/xterm-256color-italic.terminfo
 echo 'Set "Report Terminal Type" to xterm-256color-italic,'
