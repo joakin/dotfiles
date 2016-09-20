@@ -1,5 +1,5 @@
 
-source ~/.config/bash/colors.sh
+# source ~/.config/bash/colors.sh
 
 export UNAME=$(uname)
 
