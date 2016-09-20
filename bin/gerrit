@@ -26,6 +26,7 @@ import sys
 import argparse
 
 HOST_NAME = 'gerrit.wikimedia.org'
+QUERY_SUFFIX = '&o=DETAILED_ACCOUNTS&O=1'
 
 def get_project():
     command = "git remote -v | head -n1 | awk '{print $2}' | sed -e 's,.*:\(.*/\)\?,,' -e 's/\.git$//'"
@@ -34,9 +35,14 @@ def get_project():
     #Launch the shell command:
     output, error = process.communicate()
     if output[0:4] == 'git/':
-		output = output[4:]
+        output = output[4:]
     # protocol, empty character between //, host [everything else is the project]
-    return "/".join( output.split('/')[3:] ).replace( '\n', '' )
+    name = "/".join( output.split('/')[3:] ).replace( '\n', '' )
+    if name[0:4] == 'git/':
+        name = name[4:]
+    if name[0:2] == 'r/':
+        name = name[2:]
+    return name
 
 def calculate_age(timestamp, timestamp2=None):
     time_string = timestamp[0:18]
@@ -144,10 +150,17 @@ def filter_patches(patches, args):
             result.append(patch)
     return result
 
+def get_name(userInfo):
+    if "name" in userInfo:
+        return userInfo["name"]
+    else:
+        return userInfo["_account_id"]
+
 def get_patches(url):
     patches = []
     for change in query_gerrit(url):
-        user = change["owner"]["name"]
+        user = get_name(change["owner"])
+
         subj = change["subject"]
         number = change["_number"]
         url = 'https://%s/r/%s' % (HOST_NAME, number)
@@ -156,7 +169,8 @@ def get_patches(url):
         approved = None
 
         if "approved" in reviews:
-            approved = reviews["approved"]["name"]
+            review = reviews["approved"]
+            approved = get_name(review)
 
         age = calculate_age(change["created"])
         if change["status"] == u"MERGED":
@@ -172,7 +186,6 @@ def get_patches(url):
                  "approved": approved,
                  "id": str(number),
                  "url": url,
-                 "_sortkey": change["_sortkey"],
                  "age": age,
                  "created": change["created"],
                  "updated": change["updated"],
@@ -188,15 +201,15 @@ def get_incoming_patches(reviewer, project=None):
     if project:
         params += '+project:"%s"'% project
 
-    url = 'https://$s/r/changes/?q=%s&n=25&O=1'%( HOST_NAME, params )
+    url = 'https://$s/r/changes/?q=%s&n=25%s'%( HOST_NAME, params, QUERY_SUFFIX )
     return get_patches(url)
 
 def get_project_merged_patches(project, number=250):
-    url = "https://%s/r/changes/?q=status:merged+project:%s&n=%s&O=1"%( HOST_NAME, project, number )
+    url = "https://%s/r/changes/?q=status:merged+project:%s&n=%s%s"%( HOST_NAME, project, number, QUERY_SUFFIX )
     return get_patches(url)
 
 def get_project_patches(project, number=250):
-    url = "https://%s/r/changes/?q=status:open+project:%s&n=%s&O=1"%( HOST_NAME, project, number )
+    url = "https://%s/r/changes/?q=status:open+project:%s&n=%s%s"%( HOST_NAME, project, number, QUERY_SUFFIX )
     return get_patches(url)
 
 def choose_project(match_pattern=None):
@@ -241,6 +254,7 @@ def get_parser():
         'sample_size': 'Where applicable control the sample size of patchsets to query against',
         'review': 'Send a +1, -1, +2 or +2 to Gerrit',
         'message': 'Message to send with your review.',
+        'feeling_lucky': 'Automatically download the first patch.',
         'show': 'Show additional information. Valid values: url, id'
     }
     parser = argparse.ArgumentParser()
@@ -265,16 +279,20 @@ def get_parser():
     parser.add_argument('--review', help=help['review'])
     parser.add_argument('--message', help=help['message'])
     parser.add_argument('--sample_size', help=help['sample_size'], type=int, default=250)
+    parser.add_argument('--feeling_lucky', help=help['feeling_lucky'])
     return parser
 
 def submit_review( score, message ):
     process = subprocess.Popen('git rev-parse HEAD', stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     output, error = process.communicate()
     commit = output.strip()
-    msg = "'%s'"%message
-    subprocess.call(['ssh', '-p 29418',
+    args = ['ssh', '-p 29418',
         'gerrit.wikimedia.org', 'gerrit', 'review',
-        '--code-review', score, '--message', msg, commit])
+        '--code-review', score ]
+    if msg:
+        args.extend( [ '--message', "\"" + msg.replace( '"', '' ).replace( "'", '' ) + "\"" ] )
+    args.append( commit )
+    subprocess.Popen( args ).communicate()
 
 def do_report(project, sample_size, report_mode='all'):
     merged_patches = get_project_merged_patches(project, sample_size)
@@ -355,57 +373,15 @@ def determine_project(parser, args):
 
     return project
 
-if __name__ == '__main__':
-    parser = get_parser()
-    args = parser.parse_args()
-    if args.review:
-        submit_review( args.review, args.message )
-        sys.exit()
-
-    project = determine_project(parser, args)
-    if args.reviewee:
-        if not project:
-            args.show.append('project')
-            args.excludeuser.append(args.reviewee.lower())
-        patches = get_incoming_patches(args.reviewee, project)
-    # A project is mandatory if no reviewee
-    else:
-        if project is None:
-            project = get_project()
-            if project is None:
-                print "Provide a project name as a parameter e.g. mediawiki/core"
-                parser.print_help()
-                sys.exit()
-        if args.report:
-            do_report(project, args.sample_size, args.report)
-            sys.exit()
-        else:
-            patches = get_project_patches(project)
-
+def prompt_user_for_patch( action, patches, show ):
+    #start on 1 since 1 is the easiest key to press on the keyboard
+    key = 1
+    last_score = 3
     RED = '\033[91m'
     GREEN = '\033[92m'
     GRAY = '\033[90m'
     ENDC = '\033[0m'
     BOLD = "\033[1m"
-    try:
-        action = args.action
-        if action is None:
-            action = 'checkout'
-    except KeyError:
-        action = 'checkout'
-
-    if len(patches) == 0:
-        print "No patches found for project %s \
-- did you type it correctly?" % project
-        sys.exit()
-
-    patches = filter_patches(patches, args)
-    if len(patches) == 0:
-        print "No patches met the filter."
-        sys.exit()
-    #start on 1 since 1 is the easiest key to press on the keyboard
-    key = 1
-    last_score = 3
     print 'Open patchsets listed below in priority order:\n'
     for patch in patches:
         score = patch["score"]
@@ -423,11 +399,11 @@ if __name__ == '__main__':
         string_args = (key, patch["subject"], patch["user"],
                 patch["age"], score)
         print '%02d: %s (by %s, %s days old) [%s]' % string_args
-        if 'url' in args.show:
+        if 'url' in show:
             print '\t%s%s%s'% (GRAY, patch['url'], ENDC )
-        if 'id' in args.show:
+        if 'id' in show:
             print '\t%s%s%s'% (GRAY, patch['id'], ENDC )
-        if 'project' in args.show:
+        if 'project' in show:
             print '\t%s%s%s'% (GRAY, patch['project'], ENDC )
         key += 1
     print '\n'
@@ -436,7 +412,61 @@ if __name__ == '__main__':
     else:
         prompt = 'Enter number of patchset to checkout'
     prompt += ' (Press enter to exit):'
-    choice = raw_input(prompt)
+    return raw_input(prompt)
+
+if __name__ == '__main__':
+    parser = get_parser()
+    args = parser.parse_args()
+    if args.review:
+        if args.message == None:
+            msg = ''
+        else:
+            msg = args.message
+        submit_review( args.review, msg )
+        sys.exit()
+
+    project = determine_project(parser, args)
+    if args.reviewee:
+        if not project:
+            args.show.append('project')
+            args.excludeuser.append(args.reviewee.lower())
+        patches = get_incoming_patches(args.reviewee, project)
+    # A project is mandatory if no reviewee
+    else:
+        if project is None:
+            project = get_project()
+            if project is None:
+                print "Provide a project name as a parameter e.g. mediawiki/core"
+                parser.print_help()
+                sys.exit(1)
+        if args.report:
+            do_report(project, args.sample_size, args.report)
+            sys.exit()
+        else:
+            patches = get_project_patches(project)
+
+    try:
+        action = args.action
+        if action is None:
+            action = 'checkout'
+    except KeyError:
+        action = 'checkout'
+
+    if len(patches) == 0:
+        print "No patches found for project %s \
+- did you type it correctly?" % project
+        sys.exit(1)
+
+    patches = filter_patches(patches, args)
+    if len(patches) == 0:
+        print "No patches met the filter."
+        sys.exit(1)
+
+    if args.feeling_lucky:
+        choice = 1
+    else:
+        choice = prompt_user_for_patch( action, patches, args.show )
+
     try:
         change = patches[int(choice) - 1]
         if action == 'open':
