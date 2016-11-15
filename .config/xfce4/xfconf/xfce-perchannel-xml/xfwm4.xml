@@ -2,13 +2,6 @@
 
 <channel name="xfwm4" version="1.0">
   <property name="general" type="empty">
-    <property name="frame_opacity" type="empty"/>
-    <property name="show_frame_shadow" type="empty"/>
-    <property name="show_popup_shadow" type="empty"/>
-    <property name="theme" type="string" value="Numix"/>
-    <property name="use_compositing" type="empty"/>
-    <property name="workspace_count" type="empty"/>
-    <property name="workspace_names" type="empty"/>
     <property name="activate_action" type="empty"/>
     <property name="box_move" type="empty"/>
     <property name="box_resize" type="empty"/>
@@ -16,18 +9,22 @@
     <property name="button_offset" type="empty"/>
     <property name="button_spacing" type="empty"/>
     <property name="click_to_focus" type="empty"/>
-    <property name="focus_delay" type="empty"/>
     <property name="cycle_apps_only" type="empty"/>
     <property name="cycle_draw_frame" type="empty"/>
-    <property name="dbl_click_time" type="empty"/>
+    <property name="double_click_distance" type="empty"/>
+    <property name="double_click_time" type="empty"/>
+    <property name="focus_delay" type="empty"/>
     <property name="focus_new" type="empty"/>
+    <property name="frame_opacity" type="empty"/>
     <property name="full_width_title" type="empty"/>
     <property name="maximized_offset" type="empty"/>
+    <property name="mousewheel_rollup" type="empty"/>
     <property name="placement_mode" type="empty"/>
     <property name="raise_delay" type="empty"/>
     <property name="raise_on_click" type="empty"/>
     <property name="raise_on_focus" type="empty"/>
     <property name="repeat_urgent_blink" type="empty"/>
+    <property name="scroll_workspaces" type="empty"/>
     <property name="shadow_delta_height" type="empty"/>
     <property name="shadow_delta_width" type="empty"/>
     <property name="shadow_delta_x" type="empty"/>
@@ -35,9 +32,12 @@
     <property name="shadow_opacity" type="empty"/>
     <property name="show_app_icon" type="empty"/>
     <property name="show_dock_shadow" type="empty"/>
+    <property name="show_frame_shadow" type="empty"/>
+    <property name="show_popup_shadow" type="empty"/>
     <property name="snap_to_border" type="empty"/>
     <property name="snap_to_windows" type="empty"/>
     <property name="snap_width" type="empty"/>
+    <property name="theme" type="string" value="Numix"/>
     <property name="title_alignment" type="empty"/>
     <property name="title_font" type="string" value="Ubuntu Medium 9"/>
     <property name="title_horizontal_offset" type="empty"/>
@@ -46,13 +46,13 @@
     <property name="title_vertical_offset_active" type="empty"/>
     <property name="title_vertical_offset_inactive" type="empty"/>
     <property name="urgent_blink" type="empty"/>
+    <property name="use_compositing" type="empty"/>
+    <property name="workspace_count" type="empty"/>
+    <property name="workspace_names" type="empty"/>
     <property name="wrap_resistance" type="empty"/>
-    <property name="wrap_windows" type="empty"/>
-    <property name="wrap_workspaces" type="empty"/>
-    <property name="double_click_time" type="empty"/>
-    <property name="double_click_distance" type="empty"/>
-    <property name="mousewheel_rollup" type="empty"/>
-    <property name="scroll_workspaces" type="empty"/>
+    <property name="wrap_windows" type="bool" value="false"/>
+    <property name="wrap_workspaces" type="bool" value="false"/>
+    <property name="dbl_click_time" type="empty"/>
     <property name="borderless_maximize" type="bool" value="true"/>
     <property name="cycle_hidden" type="bool" value="true"/>
     <property name="cycle_minimum" type="bool" value="true"/>
@@ -75,5 +75,10 @@
     <property name="unredirect_overlays" type="bool" value="true"/>
     <property name="wrap_cycle" type="bool" value="true"/>
     <property name="wrap_layout" type="bool" value="true"/>
+    <property name="cycle_preview" type="bool" value="true"/>
+    <property name="cycle_tabwin_mode" type="int" value="0"/>
+    <property name="horiz_scroll_opacity" type="bool" value="false"/>
+    <property name="titleless_maximize" type="bool" value="false"/>
+    <property name="zoom_desktop" type="bool" value="true"/>
   </property>
 </channel>
