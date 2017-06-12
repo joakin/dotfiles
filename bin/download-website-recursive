@@ -2,7 +2,9 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-CMD="download-website --mirror $*"
+CMD=(download-website
+  --mirror
+  "$@")
 
-${CMD}
+"${CMD[@]}"
 
