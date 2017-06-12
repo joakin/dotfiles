@@ -5,7 +5,7 @@
     <property name="font" type="string" value="Sans Bold 20"/>
   </property>
   <property name="folders" type="empty">
-    <property name="last-used-media" type="string" value="/home/jkn/Downloads/Tengo Ganas de Ti [DVDrip][AC3 5.1][Español castellano][2012]"/>
+    <property name="last-used-media" type="string" value="/home/jkn/Downloads"/>
   </property>
   <property name="window" type="empty">
     <property name="maximized" type="bool" value="false"/>

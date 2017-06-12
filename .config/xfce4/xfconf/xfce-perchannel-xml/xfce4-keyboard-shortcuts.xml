@@ -242,6 +242,10 @@
       <property name="&lt;Alt&gt;F6" type="string" value="maximize_vert_key"/>
       <property name="&lt;Alt&gt;F7" type="string" value="maximize_window_key"/>
       <property name="&lt;Alt&gt;F8" type="string" value="resize_window_key"/>
+      <property name="&lt;Super&gt;Up" type="string" value="tile_up_key"/>
+      <property name="&lt;Super&gt;Down" type="string" value="tile_down_key"/>
+      <property name="&lt;Super&gt;Left" type="string" value="tile_left_key"/>
+      <property name="&lt;Super&gt;Right" type="string" value="tile_right_key"/>
     </property>
   </property>
   <property name="providers" type="array">

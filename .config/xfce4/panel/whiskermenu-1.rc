@@ -1,7 +1,8 @@
-favorites=exo-web-browser.desktop,chromium-browser.desktop,exo-mail-reader.desktop,exo-file-manager.desktop,abiword.desktop,gnumeric.desktop,pidgin.desktop,gmusicbrowser.desktop,ubuntu-software-center.desktop,exo-terminal-emulator.desktop,xfhelp4.desktop
-recent=gvim.desktop,ubuntu-software-center.desktop,chromium-browser.desktop,exo-terminal-emulator.desktop,xfce-settings-manager.desktop,gnome-specimen.desktop,exo-web-browser.desktop
+favorites=exo-web-browser.desktop,chromium-browser.desktop,firefox.desktop,exo-mail-reader.desktop,exo-file-manager.desktop,abiword.desktop,gnumeric.desktop,pidgin.desktop,gmusicbrowser.desktop,ubuntu-software-center.desktop,exo-terminal-emulator.desktop,xfhelp4.desktop
+recent=firefox.desktop,synaptic.desktop,ubuntu-software-center.desktop,epiphany.desktop,chromium-browser.desktop,xfce-mouse-settings.desktop,epiphany-game.desktop,update-manager.desktop,htop.desktop,hardinfo.desktop
 button-title=Applications Menu
 button-icon=xubuntu-logo-menu
+button-single-row=false
 show-button-title=false
 show-button-icon=true
 launcher-show-name=true
@@ -10,12 +11,15 @@ item-icon-size=1
 hover-switch-category=false
 category-icon-size=0
 load-hierarchy=true
+recent-items-max=10
 favorites-in-recent=true
 display-recent-default=false
 position-search-alternate=true
 position-commands-alternate=false
+position-categories-alternate=false
 menu-width=400
 menu-height=500
+menu-opacity=100
 command-settings=xfce4-settings-manager
 show-command-settings=true
 command-lockscreen=xflock4
@@ -26,6 +30,8 @@ command-logout=xfce4-session-logout
 show-command-logout=true
 command-menueditor=menulibre
 show-command-menueditor=true
+command-profile=mugshot
+show-command-profile=true
 search-actions=4
 
 [action0]

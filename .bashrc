@@ -144,3 +144,6 @@ export MW_SERVER='http://localhost:8080'
 export MW_SCRIPT_PATH='/w'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# JVM
+export JAVA_OPTS="-Xms256m -Xmx512m"

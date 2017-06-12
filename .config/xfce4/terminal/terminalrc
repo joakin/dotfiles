@@ -1,5 +1,4 @@
 [Configuration]
-FontName=monoOne 14
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBordersDefault=TRUE
@@ -17,6 +16,12 @@ MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
 MiscScrollAlternateScreen=TRUE
-ColorBackground=#14a514a514a5
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
+FontName=Courier 10 Pitch 14
+BackgroundImageStyle=TERMINAL_BACKGROUND_STYLE_STRETCHED
+BackgroundImageFile=/home/jkn/Pictures/Gradient_11.jpg
+ColorForeground=#000000
+ColorBackground=#ffffff
+BackgroundMode=TERMINAL_BACKGROUND_IMAGE
+BackgroundDarkness=0,000000
 
