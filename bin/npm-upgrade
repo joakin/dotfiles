@@ -2,7 +2,6 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f2)
-do
-    npm -g install "$package"
-done
+PACKAGES=$(npm outdated -g --parseable | cut -d: -f4 | cut -d@ -f1 | tr '\n' ' ')
+echo "npm install -g $PACKAGES"
+npm install -g $PACKAGES
