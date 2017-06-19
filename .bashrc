@@ -74,9 +74,15 @@ export PATH=~/bin:$PATH
 # Aliases
 #
 
-alias v='vim'
-alias v.='vim .'
-alias vi='vim'
+# Trying neovim
+
+WHICHVIM=$(which vim)
+alias oldvim="${WHICHVIM}"
+alias vim='nvim'
+
+alias v='nvim'
+alias v.='nvim .'
+alias vi='nvim'
 alias n='nvim'
 alias emacs='emacs -nw'
 
@@ -111,8 +117,8 @@ alias fuck='figlet -t -f broadway fuck '
 # Vars
 #
 
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 # Enables color in the terminal bash shell export
 export CLICOLOR=1
@@ -120,8 +126,8 @@ export CLICOLOR=1
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000000
 
-# export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu' -c 'nnoremap i <nop>' -"
-export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+# export MANPAGER="col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu' -c 'nnoremap i <nop>' -"
+export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 # node
 export PATH=./node_modules/.bin:$PATH
