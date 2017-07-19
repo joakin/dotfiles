@@ -1,6 +1,8 @@
 
 # source ~/.config/bash/colors.sh
 
+shopt -s globstar
+
 export UNAME=$(uname)
 
 if [[ $UNAME == "Darwin" ]]; then
