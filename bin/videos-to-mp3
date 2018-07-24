@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+for i in *.{mp4,webm,mkv}; do
+  ffmpeg -i "$i" "${i%%.*}.mp3"
+done
