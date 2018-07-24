@@ -155,3 +155,5 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # JVM
 export JAVA_OPTS="-Xms256m -Xmx512m"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
