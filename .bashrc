@@ -16,7 +16,8 @@ if [[ $UNAME == "Darwin" ]]; then
 
   # npm bins
   NODE_PATH=/usr/local/lib/node_modules
-  export PATH=/usr/local/share/npm/bin:$PATH
+  export PATH=$NODE_PATH:$PATH
+  source <(npm completion)
 
   # Ruby shit
   export PATH=$PATH:/usr/local/opt/ruby/bin
