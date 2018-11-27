@@ -19,10 +19,7 @@ ln_cfg .bash_profile ~/.bash_profile
 ln_cfg .bash_prompt ~/.bash_prompt
 ln_cfg .bashrc ~/.bashrc
 ln_cfg .inputrc ~/.inputrc
-ln_cfg .jsbeautifyrc ~/.jsbeautifyrc
-ln_cfg .jshintrc ~/.jshintrc
 ln_cfg .tmux.conf ~/.tmux.conf
-ln_cfg .vimperatorrc ~/.vimperatorrc
 ln_cfg .gitignore_global ~/.gitignore_global
 ln_cfg .agignore ~/.agignore
 
@@ -63,11 +60,10 @@ else
   fi
 fi
 
+UNAME=$(uname)
 if [[ $UNAME == "Darwin" ]]; then
 
   ln_cfg .amethyst ~/.amethyst
-  ln_cfg .LightTable/settings ~/Library/Application\ Support/LightTable/settings
-  ln_cfg .KeyRemap4MacBook ~/Library/Application\ Support/KeyRemap4MacBook
 
 # elif [[ $UNAME == "Linux" ]]; then
 
