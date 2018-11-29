@@ -18,5 +18,6 @@ fi
     for sub in *; do
         [[ -d "${sub}/.git" ]] || continue
         echo "$sub [$(cd "$sub"; git  branch | grep '^\*' | cut -d' ' -f2)]"
+        echo "$(cd "$sub"; git status -s)"
     done
 )
