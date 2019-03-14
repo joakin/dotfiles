@@ -24,7 +24,8 @@ function local_prompt
   PS1BASE="$PATHCOLOR\W$RESETCOLOR"
   PS1BASE+="$GITCOLOR \$(__git_ps1 \"(%s) \")$RESETCOLOR"
   PS1BASE+="$PROMPTCOLOR"
-  PS1BASE+='=>' # ♮ ▶ ▷ ⊙ ⊃ ※ ∴ ∵ →
+  PS1BASE+='→'
+  # ♮ ▶ ▷ ⊙ ⊃ ※ ∴ ∵ →
   PS1BASE+="$RESETCOLOR "
 
   PS1=$PS1BASE

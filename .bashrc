@@ -1,16 +1,17 @@
+# START TRACING
+# gdate for OSX, date for linux
+# PS4='+ $(gdate "+%s.%N")\011 '
+# exec 3>&2 2>/tmp/bashstart.log
+# set -x
 
 # source ~/.config/bash/colors.sh
 
 shopt -s globstar
+shopt -s extglob
 
 export UNAME=$(uname)
 
 if [[ $UNAME == "Darwin" ]]; then
-  # alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-
-  # alias to nw
-  alias nw="/Applications/node-webkit.app/Contents/MacOS/node-webkit"
-
   # homebrew stuff
   export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
@@ -29,30 +30,14 @@ if [[ $UNAME == "Darwin" ]]; then
   export PATH=$PATH:$HOME/.cargo/bin
   export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib
 
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-  fi
+  export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+  [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
   source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
 
-  eval "$(fasd --init auto)"
-
   alias ls='ls -G'
 
-  _fasd_bash_hook_cmd_complete v o
-
-  # OSX Docker stuff
-  export DOCKER_TLS_VERIFY=1
-  export DOCKER_HOST=tcp://192.168.59.103:2376
-  export DOCKER_CERT_PATH=/Users/jhernandez/.boot2docker/certs/boot2docker-vm
-
 elif [[ $UNAME == "Linux" ]]; then
-  source ~/.bashrc.ubuntu
-
-  case "$TERM" in
-    xterm*) TERM=xterm-256color
-  esac
-
   alias open='xdg-open'
 
   #npm bins
@@ -99,7 +84,6 @@ alias serve_this='python -m SimpleHTTPServer'
 alias c='clear'
 
 alias g='git'
-__git_complete g __git_main
 
 alias collapse="sed -e 's/  */ /g'"
 alias cuts="cut -d' '"
@@ -134,27 +118,20 @@ export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist non
 
 # node
 export PATH=./node_modules/.bin:$PATH
-
-# Wikimedia stuff
-export GERRIT_USERNAME=Jhernandez
-alias gerritr="gerrit --gtscore -1 --ignorepattern \"WIP\" --excludeuser $GERRIT_USERNAME"
-alias gerritm="gerrit --byuser $GERRIT_USERNAME"
-# Wikimedia Cucumber vars
-export MEDIAWIKI_API_URL=http://127.0.0.1:8080/w/api.php
-export MEDIAWIKI_USER=Selenium_user
-export MEDIAWIKI_PASSWORD=vagrant
-export MEDIAWIKI_URL=http://127.0.0.1:8080/wiki/
-export BROWSER=phantomjs
-# MF jsduck and others
-export MW_INSTALL_PATH=/Users/jhernandez/dev/wikimedia/mediawiki-vagrant/mediawiki
-# grunt qunit debugging, default to true (readable tests)
-export QUNIT_DEBUG=true
-export MW_SERVER='http://localhost:8080'
-export MW_SCRIPT_PATH='/w'
+npm config set ignore-scripts true
+alias nr="npm run --silent --ignore-scripts=false"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # JVM
 export JAVA_OPTS="-Xms256m -Xmx512m"
 
+# FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# RUST
+source $HOME/.cargo/env
+
+# END TRACING
+# set +x
+# exec 2>&3 3>&-
