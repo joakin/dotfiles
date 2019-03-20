@@ -1,6 +1,33 @@
-#!/bin/bash
+#!/bin/sh
 
-file=$1
-min="${file%.js}.min.js"
+# Docs: https://elm-lang.org/0.19.0/optimize
 
-uglifyjs "$file" --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters,keep_fargs=false,unsafe_comps,unsafe' | uglifyjs --mangle --output="$min"
+set -e
+
+if [ $# -eq 0 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]
+then
+  echo "$(basename "$0") input.js [input.min.js]"
+  exit 0
+fi
+
+if [ $# -lt 1 ] || [ $# -gt 2 ]
+then
+  echo "Need a file name for the JS output, and an optional name for the output"
+  exit 1
+fi
+
+if [ ! -f "$1" ] || [ "${1%.js}" = "$1" ]
+then
+  echo "\"$1\" needs to be a JS file"
+  exit 1
+fi
+
+js=$1
+default_min="${js%.js}.min.js"
+min=${2:-$default_min}
+
+uglifyjs "$js" --compress "pure_funcs=[F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9],pure_getters,keep_fargs=false,unsafe_comps,unsafe" | uglifyjs --mangle --output="$min"
+
+echo "Initial size: $(wc -c < "$js") bytes  ($js)"
+echo "Minified size:$(wc -c < "$min") bytes  ($min)"
+echo "Gzipped size: $(gzip -c < "$min" | wc -c) bytes"
