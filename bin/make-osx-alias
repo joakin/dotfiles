@@ -1,14 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 set -euo pipefail
-IFS=$'\n\t'
 
-if [ $# -lt 2 ] ; then
+if [ $# -ne 2 ] ; then
     echo ""
     echo "Make OSX alias"
     echo ""
     echo "Usage:"
-    echo "    $0 real_path dest_folder"
-    exit 0
+    echo "    $(basename "$0") real_path dest_folder"
+    exit 1
 fi
 
 osascript <<END

@@ -1,3 +1,4 @@
-#!/bin/bash
+#!/bin/sh
+set -euo pipefail
 
-ls -lh ${*} | awk '{print $9,$5}' | column -t
+ls -lh $@ | awk '{print $9,$5}' | column -t

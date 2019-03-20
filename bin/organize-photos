@@ -1,15 +1,16 @@
 #!/bin/sh
-if [ -z "$1" ]
+
+if [ "$#" -ne 1 ] || [ ! -d "$1" ]
 then
   echo "Which folder do you want organize photos in?"
   exit 1
 fi
 
-IFS=$'\n\t'
+dirs=$(find "$1" -type d)
 
-for i in $(find $1 -type d)
+for i in $dirs
 do
-  read -r -p "Do you want to organize $i? [y/N] " response
+  read -r "Do you want to organize $i? [y/N] \c" response
   case $response in
     [yY][eE][sS]|[yY]) 
       jhead -autorot -n%Y%m%d-%H%M%S-%f $i/*

@@ -1,23 +1,18 @@
-#!/bin/bash
+#!/bin/sh
 set -euo pipefail
-IFS=$'\n\t'
 
-CMD=(wget
-  -e robots=off
-  --header "Cache-Control: max-age=0"
-  --header "Connection: keep-alive"
-  --header "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-  --header "Accept-Language: en-US,en;q=0.5"
-  --referer="http://www.google.com"
-  -U "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:23.0) Gecko/20100101 Firefox/23.0"
-  --page-requisites
-  --adjust-extension
-  –-convert-links
-  "$@")
-
-echo "${CMD[@]}"
-echo
-"${CMD[@]}"
+wget \
+  -e robots=off \
+  --header "Cache-Control: max-age=0" \
+  --header "Connection: keep-alive" \
+  --header "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" \
+  --header "Accept-Language: en-US,en;q=0.5" \
+  --referer="http://www.google.com" \
+  -U "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:23.0) Gecko/20100101 Firefox/23.0" \
+  --page-requisites \
+  --adjust-extension \
+  –-convert-links \
+  "$@"
 
 # --header "Accept-Encoding: gzip, deflate"
 # -H

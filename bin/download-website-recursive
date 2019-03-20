@@ -1,10 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -euo pipefail
-IFS=$'\n\t'
 
-CMD=(download-website
-  --mirror
-  "$@")
-
-"${CMD[@]}"
-
+download-website --mirror "$@"

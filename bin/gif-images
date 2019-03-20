@@ -1,15 +1,13 @@
 #!/bin/bash
 set -euo pipefail
-IFS=$'\n\t'
 
 if [ $# -ne 2 ] ; then
-    echo "$#"
     echo "Make gif from [glob] into [dest]"
     echo ""
     echo "Usage:"
-    echo "    $0 \"[glob-source-images]\" [dest-gif]"
+    echo "    $(basename "$0") \"[glob-source-images]\" [dest-gif]"
     echo "Example:"
-    echo "    $0 \"*.png\" fun.gif"
+    echo "    $(basename "$0") \"*.png\" fun.gif"
     exit 0
 fi
 

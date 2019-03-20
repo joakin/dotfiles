@@ -1,28 +1,27 @@
-#!/bin/bash
+#!/bin/sh
 set -euo pipefail
-IFS=$'\n\t'
 
-if [[ -z "$1" ]]; then
-    echo "Usage: ${FUNCNAME[0]} <dir>" >&2
-    return 1
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $(basename "$0") <dir>" >&2
+    exit 1
 fi
 
-if [[ ! -d "$1" ]]; then
+if [ ! -d "$1" ]; then
     echo "Invalid dir specified: '${1}'"
-    return 1
+    exit 1
 fi
 
 # Subshell so we don't end up in a different dir than where we started.
 (
     cd "$1"
     for sub in *; do
-        [[ -d "${sub}/.git" ]] || continue
+        [ -d "${sub}/.git" ] || continue
         echo ""
-        echo "${sub}"
+        echo "$sub"
         echo " =========="
         # Subshell so we don't end up in a different dir than where we started.
         (
-            cd "${sub}"
+            cd "$sub"
             git checkout master
             git fetch --all
             git pull

@@ -1,55 +1,54 @@
 #!/usr/bin/env node
 
-function usage (code) {
-  console.log('Call inverthex with one hex param like:')
-  console.log('  12A or AFF23B')
-  process.exit(code || 0)
+function usage(code) {
+  console.log("Call inverthex with one hex param like:");
+  console.log("  12A or AFF23B");
+  process.exit(code || 0);
 }
 
 if (process.argv.length !== 3) {
-  usage(1)
+  usage(1);
 }
 
-var arg = process.argv[2]
+const arg = process.argv[2];
 
-var m = arg.match(/^#?([a-fA-F0-9]{3,6})$/)
+const m = arg.match(/^#?([a-fA-F0-9]{3,6})$/);
 
 if (!m) {
-  usage(1)
+  usage(1);
 }
 
-var color = m[1]
+let color = m[1];
 
 if (color.length === 3) {
-  color = [color[0], color[0], color[1], color[1], color[2], color[2]].join('')
+  color = [color[0], color[0], color[1], color[1], color[2], color[2]].join("");
 }
 
-console.log(invertHex(color))
+console.log(invertHex(color));
 
-function invertHex (hexnum) {
-  hexnum = hexnum.toUpperCase()
-  var splitnum = hexnum.split('')
-  var resultnum = ''
-  var simplenum = 'FEDCBA9876'.split('')
-  var complexnum = []
-  complexnum.A = '5'
-  complexnum.B = '4'
-  complexnum.C = '3'
-  complexnum.D = '2'
-  complexnum.E = '1'
-  complexnum.F = '0'
+function invertHex(hexnum) {
+  hexnum = hexnum.toUpperCase();
+  const splitnum = hexnum.split("");
+  let resultnum = "";
+  const simplenum = "FEDCBA9876".split("");
+  const complexnum = [];
+  complexnum.A = "5";
+  complexnum.B = "4";
+  complexnum.C = "3";
+  complexnum.D = "2";
+  complexnum.E = "1";
+  complexnum.F = "0";
 
-  var i
-  for (i = 0; i < 6; i++) {
+  for (let i = 0; i < 6; i++) {
     if (!isNaN(splitnum[i])) {
-      resultnum += simplenum[splitnum[i]]
+      resultnum += simplenum[splitnum[i]];
     } else if (complexnum[splitnum[i]]) {
-      resultnum += complexnum[splitnum[i]]
+      resultnum += complexnum[splitnum[i]];
     } else {
-      console.err('Hex colors must only include hex numbers 0-9, and A-F')
-      process.exit(1)
+      console.err("Hex colors must only include hex numbers 0-9, and A-F");
+      process.exit(1);
     }
   }
 
-  return resultnum
+  return resultnum;
 }

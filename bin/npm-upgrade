@@ -1,7 +1,0 @@
-#!/bin/bash
-set -euo pipefail
-IFS=$'\n\t'
-
-PACKAGES=$(npm outdated -g --parseable | cut -d: -f4 | cut -d@ -f1 | tr '\n' ' ')
-echo "npm install -g $PACKAGES"
-npm install -g $PACKAGES

@@ -1,6 +1,7 @@
 #!/bin/sh
+set -euo pipefail
 
-if [ $# -lt 2 ] ; then
+if [ $# -ne 2 ] ; then
     echo ""
     echo "Renames files complying a pattern with a replacement pattern"
     echo "Acts in the current folder, not recursively"
@@ -20,15 +21,15 @@ if [ $# -lt 2 ] ; then
     exit 0
 fi
 
-for x in `ls`
+for x in *
 do
-    if [ ! -f $x ]; then
+    if [ ! -f "$x" ]; then
         continue
     fi
 
-    NEW_NAME=`echo $x | sed -e "s/$1/$2/g"`
-    if [ $NEW_NAME != $x ]; then
-        mv -iv $x $NEW_NAME
+    NEW_NAME=$(echo "$x" | sed -e "s/$1/$2/g")
+    if [ "$NEW_NAME" != "$x" ]; then
+        mv -iv "$x" "$NEW_NAME"
     fi
 done
 
