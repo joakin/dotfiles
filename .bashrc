@@ -46,6 +46,9 @@ if [[ $UNAME == "Darwin" ]]; then
   export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 elif [[ $UNAME == "Linux" ]]; then
+
+  [ -f ~/.bashrc_ubuntu ] && source ~/.bashrc_ubuntu
+
   alias open='xdg-open'
 
   #npm bins
