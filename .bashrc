@@ -37,6 +37,14 @@ if [[ $UNAME == "Darwin" ]]; then
 
   alias ls='ls -G'
 
+  # aseprite CLI bin
+  export PATH=$PATH:/Applications/Aseprite.app/Contents/MacOS/
+
+  # Haxe
+  export HAXE_STD_PATH="/usr/local/lib/haxe/std"
+
+  export PATH=/usr/local/opt/python/libexec/bin:$PATH
+
 elif [[ $UNAME == "Linux" ]]; then
   alias open='xdg-open'
 
@@ -118,7 +126,7 @@ export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist non
 
 # node
 export PATH=./node_modules/.bin:$PATH
-npm config set ignore-scripts true
+# npm config set ignore-scripts true
 alias nr="npm run --silent --ignore-scripts=false"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
