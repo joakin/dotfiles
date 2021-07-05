@@ -3,7 +3,7 @@
 #InstallKeybdHook
 #UseHook
 
-SendMode Input
+; SendMode Input
 ; SetKeyDelay 0
 
 #Persistent
@@ -21,17 +21,6 @@ SetCapsLockState, AlwaysOff
     }
 return
 
-; if (A_PriorHotkey != "~RControl" or A_TimeSincePriorHotkey > 400)
-
-UseReadlineKeys()
-{
-    If WinActive("ahk_exe nvim-qt.exe")
-     or WinActive("ahk_exe WindowsTerminal.exe")
-      Return 0
-    Else
-      Return 1
-}
-
 SendCommand(keys)
 {
     shift := GetKeyState("Shift") ? "+" : ""
@@ -42,7 +31,8 @@ SendCommand(keys)
 }
 
 ; Readline shortcuts
-#If UseReadlineKeys()
+; #IfWinNotActive doesn't work with regex mode, or with multiple windows, even with groups
+#If !WinActive("ahk_exe nvim-qt.exe") and !WinActive("ahk_exe WindowsTerminal.exe")
 
 ; Ctrl+A	Beginning of line
 Capslock & a::SendCommand("{Home}")
@@ -126,5 +116,3 @@ Return
 Capslock & w::Send ^{Backspace}
 
 #If
-
-
