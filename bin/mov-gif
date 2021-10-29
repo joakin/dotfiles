@@ -7,10 +7,10 @@ set -euo pipefail
 
 if [ $# -ne 2 ] ; then
     echo ""
-    echo "Make OSX alias"
+    echo "Convert a video file to a gif"
     echo ""
     echo "Usage:"
-    echo "    $(basename "$0") real_path dest_folder"
+    echo "    $(basename "$0") [input].mov [output].gif"
     exit 1
 fi
 
