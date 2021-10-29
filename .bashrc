@@ -62,6 +62,9 @@ elif [[ $UNAME == "Linux" ]]; then
       . /etc/bash_completion
   fi
   source ~/bin/git-prompt
+
+  export DENO_INSTALL="~/.deno"
+  export PATH="$DENO_INSTALL/bin:$PATH"
 fi
 
 source ~/.bash_prompt
@@ -141,7 +144,13 @@ export JAVA_OPTS="-Xms256m -Xmx512m"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # RUST
-source $HOME/.cargo/env
+[ -f ~/.cargo/env ] && source $HOME/.cargo/env
+
+# GO
+export PATH=$PATH:~/dev/go/go/bin
+
+# Python PIP
+export PATH=$PATH:~/.local/bin
 
 # END TRACING
 # set +x
