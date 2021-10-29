@@ -142,6 +142,7 @@ export JAVA_OPTS="-Xms256m -Xmx512m"
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='ag -l --nocolor --hidden --ignore=.git -g ""'
 
 # RUST
 [ -f ~/.cargo/env ] && source $HOME/.cargo/env
