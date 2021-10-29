@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ $# -ne 2 ] ; then
+    echo ""
+    echo "Convert a video file to a gif"
+    echo ""
+    echo "Usage:"
+    echo "    $(basename "$0") [input].mp4 [output].gif"
+    exit 1
+fi
+
+# -ss skip seconds, eg: -ss 30
+# -t duration, eg: -t 3
+# fps 
+# scale: 990 is half 1080p
+# -loop 0 is infinite looping
+
+ffmpeg  -i $0 -vf "fps=30,scale=990:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 $1
