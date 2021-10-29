@@ -65,6 +65,8 @@ elif [[ $UNAME == "Linux" ]]; then
 
   export DENO_INSTALL="~/.deno"
   export PATH="$DENO_INSTALL/bin:$PATH"
+
+  export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 fi
 
 source ~/.bash_prompt
