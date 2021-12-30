@@ -13,7 +13,9 @@ do
   read -r -p "Do you want to organize $i? [y/N]" response
   case $response in
     [yY][eE][sS]|[yY]) 
-      jhead -autorot -n%Y%m%d-%H%M%S-%f $i/*
+      # jhead -autorot -n%Y%m%d-%H%M%S-%f $i/*
+      # exiftool -d "%Y%m%d-%H%M%S%%-c-%%f.%%le" "-testname<CreateDate" "$i"
+      exiftool -d "%Y%m%d-%H%M%S%%-c-%%f.%%le" "-filename<CreateDate" "$i"
       ;;
     *)
       echo ""
