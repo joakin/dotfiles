@@ -46,10 +46,13 @@ if [[ $UNAME == "Darwin" ]]; then
   export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 elif [[ $UNAME == "Linux" ]]; then
+
+  [ -f ~/.bashrc_ubuntu ] && source ~/.bashrc_ubuntu
+
   alias open='xdg-open'
 
   #npm bins
-  NODE_PATH=~/.npm/bin
+  NODE_PATH=~/.npm-global-modules/bin
   export PATH=$NODE_PATH:$PATH
 
   # enable programmable completion features (you don't need to enable
