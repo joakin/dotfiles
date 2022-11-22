@@ -7,3 +7,5 @@ then
   exit 1
 fi
 git subtree push --prefix "$1" origin gh-pages
+# To force:
+# git push origin `git subtree split --prefix dist master`:gh-pages --force
