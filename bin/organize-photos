@@ -13,9 +13,11 @@ do
   read -r -p "Do you want to organize $i? [y/N]" response
   case $response in
     [yY][eE][sS]|[yY]) 
+      # Old rotate + rename with jhead
       # jhead -autorot -n%Y%m%d-%H%M%S-%f $i/*
-      # exiftool -d "%Y%m%d-%H%M%S%%-c-%%f.%%le" "-testname<CreateDate" "$i"
-      exiftool -d "%Y%m%d-%H%M%S%%-c-%%f.%%le" "-filename<CreateDate" "$i"
+      # For testing renames
+      # exiftool -ee -d "%Y%m%d-%H%M%S%%-c-%%f.%%le" "-testname<CreateDate" "-testname<DateTimeOriginal" "-testname<CreationDate"  "$i"
+      exiftool -ee -d "%Y%m%d-%H%M%S%%-c-%%f.%%le" "-filename<CreateDate" "-filename<DateTimeOriginal" "-filename<CreationDate" "$i"
       ;;
     *)
       echo ""
