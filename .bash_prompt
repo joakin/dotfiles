@@ -38,10 +38,14 @@ function remote_prompt
 
 # Configure OSC9;9 for windows terminal to know the current directory
 __wt_osc9_9 () {
-    _win_path=$(wslpath -m $(pwd))
-    printf "\033]9;9;%s\033\\" "$_win_path"
+    printf "\033]9;9;%s\033\\" "$PWD"
+}
+
+__wezterm_osc7 () {
+    printf "\033]7;file://%s%s\033\\" "$PWD"
 }
 
 [ -n "$BASH_VERSION" ] && [ -n "$WT_SESSION" ] && PROMPT_COMMAND="__wt_osc9_9"
+[ -n "$BASH_VERSION" ] && [ -z "$WT_SESSION" ] && PROMPT_COMMAND="__wezterm_osc7"
 
 local_prompt
