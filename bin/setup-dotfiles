@@ -47,19 +47,6 @@ else
   echo "Skipping .gitconfig"
 fi
 
-if [ -a ~/.vim ]
-then
-  echo ".vim already exists. Skipping."
-else
-  git clone git@github.com:joakin/.vim.git ~/.vim
-  if [ -a ~/.vimrc ]
-  then
-    ln -sv ~/.vim/init.vim ~/.vimrc
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-    vim +PluginInstall +qall
-  fi
-fi
-
 UNAME=$(uname)
 if [[ $UNAME == "Darwin" ]]; then
 
