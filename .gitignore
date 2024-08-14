@@ -22,3 +22,5 @@
 .config/vlc/
 .config/expressworks/
 .config/introtowebgl/
+.config/nvim/
+.config/.nvim-data
