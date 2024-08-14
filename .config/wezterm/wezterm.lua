@@ -131,7 +131,7 @@ config.keys = {
 	-- CTRL+SHIFT	Z	TogglePaneZoomState
 }
 
-config.color_scheme = 'Gruvbox Dark (Gogh)'
+config.color_scheme = 'GruvboxDarkHard'
 -- config.color_scheme = 'Tomorrow Night Bright'
 -- config.color_scheme = 'Tokyo Night'
 -- config.color_scheme = 'Tokyo Night Moon'
