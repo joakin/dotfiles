@@ -130,8 +130,11 @@ config.keys = {
 	-- CTRL+SHIFT+ALT	DownArrow	AdjustPaneSize={"Down", 1}
 	-- CTRL+SHIFT	Z	TogglePaneZoomState
 }
+
+config.color_scheme = 'Gruvbox Dark (Gogh)'
 -- config.color_scheme = 'Tomorrow Night Bright'
-config.color_scheme = 'Tokyo Night'
+-- config.color_scheme = 'Tokyo Night'
+-- config.color_scheme = 'Tokyo Night Moon'
 
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
@@ -146,7 +149,7 @@ config.inactive_pane_hsb = {
 	brightness = 0.3,
 }
 
-config.window_background_opacity = 0.85
+config.window_background_opacity = 0.9
 config.macos_window_background_blur = 20
 config.win32_system_backdrop = "Acrylic" -- "Mica" "Tabbed"
 
