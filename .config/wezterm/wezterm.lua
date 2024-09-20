@@ -166,6 +166,8 @@ config.window_frame = {
 	font_size = font_size,
 }
 
+config.enable_kitty_keyboard = true
+
 local function segments_for_right_status(window)
   return {
     -- window:active_workspace(),
