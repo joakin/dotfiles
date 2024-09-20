@@ -108,22 +108,22 @@ config.keys = {
 	},
 	{
 		key = 'l',
-		mods = 'ALT|SHIFT',
+		mods = 'CTRL|ALT',
 		action = wezterm.action.AdjustPaneSize { 'Right', 20 }
 	},
 	{
 		key = 'h',
-		mods = 'ALT|SHIFT',
+		mods = 'CTRL|ALT',
 		action = wezterm.action.AdjustPaneSize { 'Left', 20 }
 	},
 	{
 		key = 'j',
-		mods = 'ALT|SHIFT',
+		mods = 'CTRL|ALT',
 		action = wezterm.action.AdjustPaneSize { 'Down', 5 }
 	},
 	{
 		key = 'k',
-		mods = 'ALT|SHIFT',
+		mods = 'CTRL|ALT',
 		action = wezterm.action.AdjustPaneSize { 'Up', 5 }
 	},
 	{
