@@ -169,11 +169,22 @@ config.window_frame = {
 config.enable_kitty_keyboard = true
 
 local function segments_for_right_status(window)
-  return {
-    -- window:active_workspace(),
-    wezterm.strftime('%a, %-d %b · %H:%M'),
-    -- wezterm.hostname(),
-  }
+  local active_tab = window:active_tab()
+  local panes_info = active_tab:panes_with_info()
+  local pane_count = #panes_info
+  local segments = {}
+
+  -- Find the active pane and check if it's zoomed
+  for _, pane_info in ipairs(panes_info) do
+    if pane_info.is_active and pane_info.is_zoomed then
+      table.insert(segments, string.format("Fullscreen · %d", pane_count))
+      break
+    end
+  end
+
+  table.insert(segments, wezterm.strftime('%a, %-d %b · %H:%M'))
+
+  return segments
 end
 
 wezterm.on('update-status', function(window, _)
