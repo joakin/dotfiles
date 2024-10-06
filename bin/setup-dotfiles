@@ -7,7 +7,7 @@ ln_cfg () {
   then
     echo "File $2 already exists. Skipping."
   else
-    ln -sv ~/dotfiles/$1 $2
+    ln -sv ~/dotfiles/"$1" "$2"
   fi
 }
 
@@ -45,6 +45,26 @@ if [ "$APPEND_GITCONFIG" = true ]; then
   cat ~/dotfiles/gitconfig >> ~/.gitconfig
 else
   echo "Skipping .gitconfig"
+fi
+
+# if [ -a ~/.vim ]
+# then
+#   echo ".vim already exists. Skipping."
+# else
+#   git clone git@github.com:joakin/.vim.git ~/.vim
+#   if [ -a ~/.vimrc ]
+#   then
+#     ln -sv ~/.vim/init.vim ~/.vimrc
+#     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+#     vim +PluginInstall +qall
+#   fi
+# fi
+
+if [ -a ~/.config/nvim ]
+then
+  echo ".config/nvim already exists. Skipping."
+else
+  git clone git@github.com:joakin/nvim.git ~/.config/nvim
 fi
 
 UNAME=$(uname)

@@ -13,7 +13,7 @@ export UNAME=$(uname)
 
 if [[ $UNAME == "Darwin" ]]; then
   # homebrew stuff
-  export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+  export PATH="/opt/homebrew/bin:$PATH"
 
   # npm bins
   NODE_PATH=/usr/local/lib/node_modules
