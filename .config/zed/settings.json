@@ -1,0 +1,50 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "assistant": {
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    "version": "2"
+  },
+  "telemetry": {
+    "metrics": true
+  },
+  "base_keymap": "VSCode",
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "ui_font_family": "Input Sans",
+  // "buffer_font_family": "Marista",
+  // "buffer_font_size": 24,
+  // "buffer_line_height": "standard",
+  // "buffer_font_family": "Codelia Ligatures",
+  // "buffer_font_family": "Comic Code Ligatures",
+  // "buffer_font_family": "Maple Mono",
+  // "buffer_font_family": "Input Sans",
+  // "buffer_font_family": "Input Sans Narrow",
+  // "buffer_font_family": "Input Serif",
+  "buffer_font_family": "Input Serif Narrow",
+  "buffer_font_weight": 400,
+  "buffer_font_size": 16,
+  "buffer_line_height": "comfortable",
+  "terminal": {
+    "font_family": "Input Mono Narrow"
+  },
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
+  "vim": {
+    "use_multiline_find": true,
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true
+  }
+}
