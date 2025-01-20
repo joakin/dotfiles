@@ -1,0 +1,13 @@
+[font]
+size = 16
+
+[[font.normal]]
+family = "Monaspace Krypton Var"
+
+[[font.italic]]
+family = "Monaspace Radon Var"
+style = "Normal"
+
+[[font.bold_italic]]
+family = "Monaspace Radon Var"
+style = "Bold"
