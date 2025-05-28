@@ -60,7 +60,7 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   font_size = 16
   config.line_height = 1.4
   -- Weights: "Thin", "ExtraLight", "Light", "DemiLight", "Book", "Regular"
-  -- font = wezterm.font('Maple Mono', { weight = 'Thin' })
+  -- font = wezterm.font('Maple Mono', { weight = 'Light' })
   -- font = wezterm.font('JetBrainsMono Nerd Font Mono', { weight = 'Light' })
   -- font = wezterm.font('Spline Sans Mono', { weight = 'Light' })
   -- font = wezterm.font('Xanh Mono', { weight = 'Regular' })
@@ -235,6 +235,7 @@ config.keys = {
 -- config.color_scheme = 'GruvboxDark'
 -- config.color_scheme = 'Tomorrow Night Bright'
 config.color_scheme = 'Tokyo Night'
+-- config.color_scheme = 'Gruvbox Light'
 
 config.hide_tab_bar_if_only_one_tab = true
 config.window_padding = {
