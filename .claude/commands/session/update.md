@@ -1,10 +1,14 @@
-Update the current development session by:
+Update the current development session
+
+<update>
+$ARGUMENTS
+</update>
 
 1. Check if `.claude/sessions/.current-session` exists to find the active session
 2. If no active session, inform user to start one with `/session:start`
 3. If session exists, append to the session file with:
    - Current timestamp
-   - The update: $ARGUMENTS (or if no arguments, summarize recent activities)
+   - The update (if any), and a summary of recent activities
    - Git status summary:
      - Files added/modified/deleted (from `git status --porcelain`)
      - Current branch and last commit
