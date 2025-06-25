@@ -1,0 +1,3 @@
+- Never add signatures or co-authored lines to anything mentioning anthropic or claude or claude code please.
+- Never do a blind `git add .` without having verified there aren't unwanted changes.
+- Never ever ever mention claude or anthropic or authored information from an LLM in commit messages.
