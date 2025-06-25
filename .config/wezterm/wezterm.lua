@@ -169,6 +169,8 @@ config.keys = {
     mods = 'CTRL',
     action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|TABS|LAUNCH_MENU_ITEMS|DOMAINS|KEY_ASSIGNMENTS|WORKSPACES|COMMANDS' },
   },
+  -- Apparently this helps with multiline in claude code
+  { key = "Enter", mods = "SHIFT", action = wezterm.action.SendString("\n") },
   {
     key = 's',
     mods = 'ALT',
