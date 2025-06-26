@@ -17,60 +17,75 @@ local font_size = 14
 local useDefaultFrameFont = false
 local function font_italic(font_name, regular_weight, italic)
   italic = italic == nil and true or italic
-  config.font_rules = {
-    -- Bold-and-italic
-    {
-      intensity = 'Bold',
-      italic = true,
-      font = wezterm.font {
-        family = font_name,
-        italic = italic,
-        bold = true
-      },
-    },
 
-    -- normal-intensity-and-italic
-    {
-      intensity = 'Normal',
-      italic = true,
-      font = wezterm.font {
-        family = font_name,
-        weight = regular_weight or "Regular",
-        italic = italic,
-      },
-    },
+  config.font_rules = config.font_rules or {}
 
-    -- half-intensity-and-italic (half-bright or dim); use a lighter weight font
-    {
-      intensity = 'Half',
-      italic = true,
-      font = wezterm.font {
-        family = font_name,
-        weight = 'Light',
-        italic = italic,
-      },
+  -- Bold-and-italic
+  table.insert(config.font_rules, {
+    intensity = 'Bold',
+    italic = true,
+    font = wezterm.font {
+      family = font_name,
+      italic = italic,
+      bold = true
     },
-  }
+  })
+
+  -- normal-intensity-and-italic
+  table.insert(config.font_rules, {
+    intensity = 'Normal',
+    italic = true,
+    font = wezterm.font {
+      family = font_name,
+      weight = regular_weight or "Regular",
+      italic = italic,
+    },
+  })
+
+  -- half-intensity-and-italic (half-bright or dim)
+  table.insert(config.font_rules, {
+    intensity = 'Half',
+    italic = true,
+    font = wezterm.font {
+      family = font_name,
+      weight = 'Light',
+      italic = italic,
+    },
+  })
+end
+
+local function font_bold(font_name, bold_weight)
+  bold_weight = bold_weight or "Bold"
+
+  config.font_rules = config.font_rules or {}
+
+  table.insert(config.font_rules, {
+    intensity = 'Bold',
+    italic = false,
+    font = wezterm.font {
+      family = font_name,
+      weight = bold_weight,
+    },
+  })
 end
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   -- Windows
 elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple == "x86_64-apple-darwin" then
-  local use_italic_font = false
   font_size = 16
   config.line_height = 1.4
-  -- Weights: "Thin", "ExtraLight", "Light", "DemiLight", "Book", "Regular"
+  -- Weights: "Thin", "ExtraLight", "Light", "DemiLight", "Book", "Regular", "Medium", "DemiBold", "Bold", "ExtraBold", "Black", "ExtraBlack"
   -- font = wezterm.font('Maple Mono', { weight = 'Light' })
   -- font = wezterm.font('JetBrainsMono Nerd Font Mono', { weight = 'Light' })
   -- font = wezterm.font('Spline Sans Mono', { weight = 'Light' })
   -- font = wezterm.font('Xanh Mono', { weight = 'Regular' })
   -- font_size = 18
   -- font = wezterm.font('Monaspace Argon Var', { weight = 'Regular' })
-  font = wezterm.font('Monaspace Krypton Var', { weight = 'Regular' })
-  -- font = wezterm.font('Monaspace Neon Var', { weight = 'Regular' })
+  -- font = wezterm.font('Monaspace Krypton Var', { weight = 'Regular' })
+  -- font = wezterm.font('Monaspace Neon Var', { weight = 'DemiLight' })
   -- font = wezterm.font('Monaspace Radon Var', { weight = 'Regular' })
   -- font = wezterm.font('Monaspace Xenon Var', { weight = 'Regular' })
-  font_italic("Monaspace Radon Var", nil, false)
+  -- font_italic("Monaspace Radon Var", nil, false)
   -- font = wezterm.font('Comic Code Ligatures', { weight = 'Regular' })
   -- font_size = 15
   -- config.line_height = 1.6
@@ -89,7 +104,10 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   -- config.line_height = 0.9
   -- useDefaultFrameFont = true
   -- font = wezterm.font('Input Mono', { weight = 'Regular' })
-  -- font = wezterm.font('Input Mono Narrow', { weight = 'Regular' })
+  font = wezterm.font('Input Mono Narrow', { weight = 'Light' })
+  font_bold("Input Mono Narrow", "Medium")
+  -- font_italic("Victor Mono", "DemiBold")
+  font_italic("Maple Mono", "Light")
   -- font = wezterm.font('Sligoil', { weight = 'Regular' })
   -- font = wezterm.font('Steps Mono', { weight = 'Regular' })
   -- font = wezterm.font('Steps Mono', { weight = 'DemiBold' })
@@ -114,6 +132,9 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   -- font_italic("Maple Mono", "Light")
   -- font_italic("Olympe Mono", nil, false)
   -- font_italic("Operator Mono Lig", "Light")
+  --
+  --
+  -- font = wezterm.font('Departure Mono', { weight = 'Regular' })
 else
   if is_wsl() then
     local wsl_domains = wezterm.default_wsl_domains()
