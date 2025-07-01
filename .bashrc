@@ -11,6 +11,9 @@ shopt -s extglob
 
 export UNAME=$(uname)
 
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME="$HOME/.config"
+
 if [[ $UNAME == "Darwin" ]]; then
   # homebrew stuff
   export PATH="/opt/homebrew/bin:$PATH"
@@ -33,7 +36,7 @@ if [[ $UNAME == "Darwin" ]]; then
   export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
   [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
-  source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+  source "$(brew --prefix)"/etc/bash_completion.d/git-prompt.sh
 
   alias ls='ls -G'
 
@@ -83,7 +86,7 @@ export PATH=~/bin:$PATH
 # Trying neovim
 
 WHICHVIM=$(which vim)
-alias oldvim="${WHICHVIM}"
+alias oldvim="$WHICHVIM"
 alias vim='nvim'
 
 alias v='nvim'
@@ -149,13 +152,16 @@ export JAVA_OPTS="-Xms256m -Xmx512m"
 export FZF_DEFAULT_COMMAND='ag -l --nocolor --hidden --ignore=.git -g ""'
 
 # RUST
-[ -f ~/.cargo/env ] && source $HOME/.cargo/env
+[ -f ~/.cargo/env ] && source "$HOME"/.cargo/env
 
 # GO
 export PATH=$PATH:~/dev/go/go/bin
 
 # Python PIP
 export PATH=$PATH:~/.local/bin
+
+# Deno
+. "/Users/joakin/.deno/env"
 
 # END TRACING
 # set +x

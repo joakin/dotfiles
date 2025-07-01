@@ -18,6 +18,7 @@ ln_cfg .ackrc ~/.ackrc
 ln_cfg .bash_profile ~/.bash_profile
 ln_cfg .bash_prompt ~/.bash_prompt
 ln_cfg .bashrc ~/.bashrc
+ln_cfg .zshrc ~/.zshrc
 ln_cfg .inputrc ~/.inputrc
 ln_cfg .tmux.conf ~/.tmux.conf
 ln_cfg .gitignore_global ~/.gitignore_global
