@@ -1,0 +1,68 @@
+# System stuff
+brew "bash"
+brew "bash-language-server"
+brew "pkgconf"
+brew "zsh-autosuggestions" # Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-syntax-highlighting" # Fish shell like syntax highlighting for zsh
+
+# Languages/Runtimes
+brew "node"
+brew "yarn"
+brew "gleam"
+brew "luajit"
+brew "lua-language-server"
+brew "luarocks"
+brew "stylua"
+brew "opam"
+brew "pipx" # Execute binaries from Python packages in isolated environments
+
+# CLI apps
+brew "neovim"
+brew "neovide", link: false
+brew "helix"
+brew "python"
+
+# CLI Tools
+brew "bat"
+brew "coreutils" if OS.mac?
+brew "entr"
+brew "exiftool"
+brew "fd"
+brew "ffmpeg"
+brew "fzf"
+brew "git"
+brew "glab" # Gitlab CLI
+brew "gnu-sed" if OS.mac?
+brew "jq"
+brew "tree-sitter" # For neovim
+brew "ripgrep"
+brew "shellharden" # Bash syntax highlighter that encourages/fixes variables quoting
+brew "sox" # Sound eXchange: universal sound sample translator
+brew "starship" # Cross-shell prompt for astronauts
+brew "tokei" # Program that allows you to count code, quickly
+brew "tree"
+brew "watchexec" # Execute commands when watched files change
+cask "rar"
+
+# GUI apps
+cask "alacritty"
+cask "neovide-app"
+cask "wezterm"
+
+# Fonts
+cask "font-departure-mono"
+cask "font-dm-mono"
+cask "font-hermit"
+cask "font-intel-one-mono"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-maple-mono"
+cask "font-martian-mono"
+cask "font-monaspace"
+cask "font-monaspace-nerd-font"
+cask "font-share-tech-mono"
+cask "font-sono"
+cask "font-spline-sans"
+cask "font-spline-sans-mono"
+cask "font-tt2020"
+cask "font-victor-mono"
+cask "font-xanh-mono"
