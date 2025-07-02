@@ -13,6 +13,8 @@
       "space f": "file_finder::Toggle",
       "space b": "file_finder::Toggle",
       "space r": "buffer_search::DeployReplace",
+      "space q": "pane::CloseActiveItem",
+      "space g": "git_panel::ToggleFocus",
       ",": "command_palette::Toggle",
       "-": "pane::RevealInProjectPanel"
     }
