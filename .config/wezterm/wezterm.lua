@@ -76,7 +76,10 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   config.line_height = 1.4
   -- Weights: "Thin", "ExtraLight", "Light", "DemiLight", "Book", "Regular", "Medium", "DemiBold", "Bold", "ExtraBold", "Black", "ExtraBlack"
   -- font = wezterm.font('Maple Mono', { weight = 'Light' })
-  -- font = wezterm.font('JetBrainsMono Nerd Font Mono', { weight = 'Light' })
+  font = wezterm.font('JetBrainsMono Nerd Font Mono', { weight = 'Regular' })
+  -- font_italic("Victor Mono", "DemiBold")
+  font_italic("Codelia Ligatures")
+  -- font_italic("Maple Mono", "Light")
   -- font = wezterm.font('Spline Sans Mono', { weight = 'Light' })
   -- font = wezterm.font('Xanh Mono', { weight = 'Regular' })
   -- font_size = 18
@@ -104,10 +107,9 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   -- config.line_height = 0.9
   -- useDefaultFrameFont = true
   -- font = wezterm.font('Input Mono', { weight = 'Regular' })
-  font = wezterm.font('Input Mono Narrow', { weight = 'Light' })
-  font_bold("Input Mono Narrow", "Medium")
-  -- font_italic("Victor Mono", "DemiBold")
-  font_italic("Maple Mono", "Light")
+  -- font = wezterm.font('Input Mono Narrow', { weight = 'Light' })
+  -- font_bold("Input Mono Narrow", "Medium")
+  -- font_italic("Maple Mono", "Light")
   -- font = wezterm.font('Sligoil', { weight = 'Regular' })
   -- font = wezterm.font('Steps Mono', { weight = 'Regular' })
   -- font = wezterm.font('Steps Mono', { weight = 'DemiBold' })
