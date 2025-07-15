@@ -1,8 +1,10 @@
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME="$HOME/.config"
 
+export PATH="$HOME/bin:$PATH"
+
 # Add deno completions to search path
-if [[ ":$FPATH:" != *":/Users/joakin/.zsh/completions:"* ]]; then export FPATH="/Users/joakin/.zsh/completions:$FPATH"; fi
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 export PATH="/opt/homebrew/bin:$PATH"
 source <(fzf --zsh)
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -65,13 +67,13 @@ alias fuck='figlet -t -f broadway fuck '
 #   - the correct directories to the PATH
 #   - auto-completion for the opam binary
 # This section can be safely removed at any time if needed.
-[[ ! -r '/Users/joakin/.opam/opam-init/init.zsh' ]] || source '/Users/joakin/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+[[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
 # END opam configuration
 
 # Created by `pipx` on 2024-09-17 14:57:16
-export PATH="$PATH:/Users/joakin/.local/bin"
-. "/Users/joakin/.deno/env"
+export PATH="$PATH:$HOME/.local/bin"
+. "$HOME/.deno/env"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # Odin
-export PATH="$PATH:/Users/joakin/dev/forks/Odin"
-export PATH="$PATH:/Users/joakin/dev/forks/ols"
+export PATH="$PATH:$HOME/dev/forks/Odin"
+export PATH="$PATH:$HOME/dev/forks/ols"
