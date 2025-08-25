@@ -1,0 +1,119 @@
+#!/bin/bash
+
+# fetch-markdown - Fetch web pages and convert to markdown
+# Usage: fetch-markdown <url> [output-file]
+
+set -euo pipefail
+
+show_help() {
+    cat << EOF
+fetch-markdown - Fetch web pages and convert to markdown
+
+USAGE:
+    fetch-markdown <url> [output-file]
+
+ARGUMENTS:
+    url          The URL to fetch and convert
+    output-file  Output file path (optional, defaults to stdout)
+
+OPTIONS:
+    -h, --help   Show this help message
+    -s, --silent Run silently (no progress output)
+
+EXAMPLES:
+    # Output to stdout
+    fetch-markdown https://example.com
+
+    # Save to file
+    fetch-markdown https://example.com docs/example.md
+
+    # Run silently
+    fetch-markdown -s https://example.com output.md
+
+REQUIREMENTS:
+    - curl
+    - pandoc
+
+AUTHOR:
+    Created for converting web documentation to markdown for LLM use
+EOF
+}
+
+# Default options
+SILENT=false
+URL=""
+OUTPUT=""
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -h|--help)
+            show_help
+            exit 0
+            ;;
+        -s|--silent)
+            SILENT=true
+            shift
+            ;;
+        -*)
+            echo "Error: Unknown option $1" >&2
+            echo "Use -h or --help for usage information" >&2
+            exit 1
+            ;;
+        *)
+            if [[ -z "$URL" ]]; then
+                URL="$1"
+            elif [[ -z "$OUTPUT" ]]; then
+                OUTPUT="$1"
+            else
+                echo "Error: Too many arguments" >&2
+                echo "Use -h or --help for usage information" >&2
+                exit 1
+            fi
+            shift
+            ;;
+    esac
+done
+
+# Validate required arguments
+if [[ -z "$URL" ]]; then
+    echo "Error: URL is required" >&2
+    echo "Use -h or --help for usage information" >&2
+    exit 1
+fi
+
+# Check dependencies
+if ! command -v curl &> /dev/null; then
+    echo "Error: curl is required but not installed" >&2
+    exit 1
+fi
+
+if ! command -v pandoc &> /dev/null; then
+    echo "Error: pandoc is required but not installed" >&2
+    exit 1
+fi
+
+# Progress output function
+log() {
+    if [[ "$SILENT" != true ]]; then
+        echo "$1" >&2
+    fi
+}
+
+# Main execution
+log "Fetching: $URL"
+
+if [[ -n "$OUTPUT" ]]; then
+    # Create output directory if it doesn't exist
+    OUTPUT_DIR=$(dirname "$OUTPUT")
+    if [[ ! -d "$OUTPUT_DIR" ]]; then
+        mkdir -p "$OUTPUT_DIR"
+    fi
+    
+    curl --silent --fail "$URL" | pandoc --from html --to markdown_strict --quiet -o "$OUTPUT"
+    log "Saved to: $OUTPUT"
+else
+    curl --silent --fail "$URL" | pandoc --from html --to markdown_strict --quiet
+fi
+
+log "Done"
