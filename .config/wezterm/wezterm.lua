@@ -76,14 +76,14 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   config.line_height = 1.4
   -- Weights: "Thin", "ExtraLight", "Light", "DemiLight", "Book", "Regular", "Medium", "DemiBold", "Bold", "ExtraBold", "Black", "ExtraBlack"
   -- font = wezterm.font('Maple Mono', { weight = 'Light' })
-  font = wezterm.font('JetBrainsMono Nerd Font Mono', { weight = 'Regular' })
+  -- font = wezterm.font('JetBrainsMono Nerd Font Mono', { weight = 'Regular' })
   -- font_italic("Victor Mono", "DemiBold")
-  font_italic("Codelia Ligatures")
+  -- font_italic("Codelia Ligatures")
   -- font_italic("Maple Mono", "Light")
   -- font = wezterm.font('Spline Sans Mono', { weight = 'Light' })
   -- font = wezterm.font('Xanh Mono', { weight = 'Regular' })
   -- font_size = 18
-  -- font = wezterm.font('Monaspace Argon Var', { weight = 'Regular' })
+  -- font = wezterm.font('Monaspace Argon Var', { weight = 'Light' })
   -- font = wezterm.font('Monaspace Krypton Var', { weight = 'Regular' })
   -- font = wezterm.font('Monaspace Neon Var', { weight = 'DemiLight' })
   -- font = wezterm.font('Monaspace Radon Var', { weight = 'Regular' })
@@ -92,7 +92,7 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   -- font = wezterm.font('Comic Code Ligatures', { weight = 'Regular' })
   -- font_size = 15
   -- config.line_height = 1.6
-  -- font = wezterm.font('Codelia Ligatures', { weight = 'Light' })
+  -- font = wezterm.font('Codelia Ligatures', { weight = 'Regular' })
   -- font_size = 15
   -- font = wezterm.font('Operator Mono', { weight = 'Light' })
   -- font = wezterm.font('Operator Mono Lig', { weight = 'Light' })
@@ -137,6 +137,13 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   --
   --
   -- font = wezterm.font('Departure Mono', { weight = 'Regular' })
+  -- font = wezterm.font('Geist Mono', { weight = 'Regular' })
+  -- font = wezterm.font('Annotation Mono', { weight = 400 })
+  -- font_italic("Codelia Ligatures")
+  font = wezterm.font('Sono', { weight = 300 })
+  font_size = 18
+  -- font = wezterm.font('MD IO Trial', { weight = 300 })
+  -- font_bold("MD IO Trial", 500)
 else
   if is_wsl() then
     local wsl_domains = wezterm.default_wsl_domains()
