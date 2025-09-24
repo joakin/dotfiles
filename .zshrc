@@ -3,6 +3,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 export PATH="$HOME/bin:$PATH"
 
+# Editor
+export EDITOR="nvim"
+
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 export PATH="/opt/homebrew/bin:$PATH"
