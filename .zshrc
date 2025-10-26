@@ -75,7 +75,14 @@ alias fuck='figlet -t -f broadway fuck '
 
 # Created by `pipx` on 2024-09-17 14:57:16
 export PATH="$PATH:$HOME/.local/bin"
-. "$HOME/.deno/env"
+
+# Deno
+[ -f ~/.deno/env ] && source ~/.deno/env
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # Odin
 export PATH="$PATH:$HOME/dev/forks/Odin"

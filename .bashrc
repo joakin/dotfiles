@@ -152,7 +152,7 @@ export JAVA_OPTS="-Xms256m -Xmx512m"
 export FZF_DEFAULT_COMMAND='ag -l --nocolor --hidden --ignore=.git -g ""'
 
 # RUST
-[ -f ~/.cargo/env ] && source "$HOME"/.cargo/env
+[ -f ~/.cargo/env ] && source ~/.cargo/env
 
 # GO
 export PATH=$PATH:~/dev/go/go/bin
@@ -161,7 +161,11 @@ export PATH=$PATH:~/dev/go/go/bin
 export PATH=$PATH:~/.local/bin
 
 # Deno
-. "/Users/joakin/.deno/env"
+[ -f ~/.deno/env ] && source ~/.deno/env
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # END TRACING
 # set +x
