@@ -7,21 +7,27 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "agent": {
-    "profiles": {},
-    "default_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-latest"
-    },
-    "version": "2"
+  "ui_font_weight": 350.0,
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "git_panel": {
+    "dock": "left",
   },
   "telemetry": {
-    "metrics": true
+    "metrics": true,
   },
   "base_keymap": "VSCode",
   "vim_mode": true,
-  "ui_font_size": 16,
-  "ui_font_family": "Input Sans",
+  "ui_font_size": 14,
+  // "ui_font_family": "Input Sans",
+  "ui_font_family": "TX-02",
   // "buffer_font_family": "Marista",
   // "buffer_font_size": 24,
   // "buffer_line_height": "standard",
@@ -31,21 +37,21 @@
   // "buffer_font_family": "Input Sans",
   // "buffer_font_family": "Input Sans Narrow",
   // "buffer_font_family": "Input Serif",
-  "buffer_font_family": "Input Serif Narrow",
-  "buffer_font_weight": 400,
-  "buffer_font_size": 16,
+  // "buffer_font_family": "Input Serif Narrow",
+  "buffer_font_family": "TX-02",
+  "buffer_font_weight": 350.0,
+  "buffer_font_size": 14,
   "buffer_line_height": "comfortable",
   "terminal": {
-    "font_family": "Input Mono Narrow"
+    "font_family": "TX-02",
   },
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "One Dark"
+    "dark": "One Dark",
   },
   "vim": {
-    "use_multiline_find": true,
     "use_smartcase_find": true,
-    "toggle_relative_line_numbers": true
-  }
+    "toggle_relative_line_numbers": true,
+  },
 }
