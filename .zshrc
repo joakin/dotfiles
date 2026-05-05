@@ -8,6 +8,7 @@ export EDITOR="nvim"
 
 export PATH="/opt/homebrew/bin:$PATH"
 source <(fzf --zsh)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=245'
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -81,7 +82,13 @@ export PATH="$PATH:$HOME/.local/bin"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# bun completions
+[ -s "/Users/joakin/.bun/_bun" ] && source "/Users/joakin/.bun/_bun"
+
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # Odin
 export PATH="$PATH:$HOME/dev/forks/Odin"
 export PATH="$PATH:$HOME/dev/forks/ols"
+
+# opencode
+export PATH=/Users/joakin/.opencode/bin:$PATH
