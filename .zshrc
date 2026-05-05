@@ -11,6 +11,11 @@ source <(fzf --zsh)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=245'
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# No underlines
+ZSH_HIGHLIGHT_STYLES[path]='none'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
+ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=green'
 
 # Key bindings
 bindkey "^P" history-beginning-search-backward
