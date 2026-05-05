@@ -140,10 +140,18 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   -- font = wezterm.font('Geist Mono', { weight = 'Regular' })
   -- font = wezterm.font('Annotation Mono', { weight = 400 })
   -- font_italic("Codelia Ligatures")
-  font = wezterm.font('Sono', { weight = 300 })
-  font_size = 18
+  -- font = wezterm.font('Sono', { weight = 300 })
+  -- font_size = 18
   -- font = wezterm.font('MD IO Trial', { weight = 300 })
   -- font_bold("MD IO Trial", 500)
+  font = wezterm.font('TX-02', { weight = 300 })
+  font_bold("TX-02", 400)
+  -- font = wezterm.font('PP Right Grotesk Mono', { weight = 400 })
+  -- font_size = 18
+  -- font = wezterm.font('Drafting* Mono', { weight = 400 })
+  -- font = wezterm.font('Liga SFMono Nerd Font', { weight = 400 })
+  -- font = wezterm.font('Ioskeley Mono', { weight = 400 })
+  -- font = wezterm.font('CommitMono', { weight = 400 })
 else
   if is_wsl() then
     local wsl_domains = wezterm.default_wsl_domains()
@@ -265,9 +273,11 @@ config.keys = {
 }
 
 -- config.color_scheme = 'GruvboxDark'
--- config.color_scheme = 'Tomorrow Night Bright'
-config.color_scheme = 'Tokyo Night'
 -- config.color_scheme = 'Gruvbox Light'
+-- config.color_scheme = 'Tokyo Night'
+-- config.color_scheme = 'Tokyo Night Day'
+config.color_scheme = 'Tomorrow Night'
+-- config.color_scheme = 'Tomorrow'
 
 config.hide_tab_bar_if_only_one_tab = true
 config.window_padding = {
