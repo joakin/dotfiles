@@ -11,8 +11,23 @@ ln_cfg () {
   fi
 }
 
+ln_rel () {
+  if [ -e "$2" ] || [ -L "$2" ]
+  then
+    echo "File $2 already exists. Skipping."
+  else
+    mkdir -p "$(dirname "$2")"
+    ln -sv "$1" "$2"
+  fi
+}
+
 ln_cfg .config ~/.config
 ln_cfg bin ~/bin
+
+mkdir -p ~/.agents
+ln_rel ../.config/.agents/skills ~/.agents/skills
+ln_rel ../.config/.agents/skills ~/.cursor/skills
+ln_rel ../.config/.agents/skills ~/.claude/skills
 
 ln_cfg .ackrc ~/.ackrc
 ln_cfg .bash_profile ~/.bash_profile
