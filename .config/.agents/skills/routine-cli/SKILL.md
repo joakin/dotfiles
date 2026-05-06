@@ -19,9 +19,7 @@ Reusable Routine CLI automations live in:
 
 Before using the raw REPL, list that folder and check whether an existing script already performs the requested action:
 
-```sh
-ls -la ~/dev/routine/scripts
-```
+!`ls -la ~/dev/routine/scripts`
 
 Prefer an existing script when it matches the request. Scripts should expose structured output for agents by default, usually JSON, and may also offer human-friendly output with a format flag.
 
