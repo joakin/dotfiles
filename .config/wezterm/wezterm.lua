@@ -201,6 +201,15 @@ if font then
 end
 config.font_size = font_size
 
+local rename_current_tab = wezterm.action.PromptInputLine {
+  description = 'Rename current tab',
+  action = wezterm.action_callback(function(window, _, line)
+    if line and line:match('%S') then
+      window:active_tab():set_title(line)
+    end
+  end),
+}
+
 config.keys = {
   {
     key = ',',
@@ -263,6 +272,11 @@ config.keys = {
     key = 'z',
     mods = 'ALT',
     action = wezterm.action.TogglePaneZoomState
+  },
+  {
+    key = 'r',
+    mods = 'ALT',
+    action = rename_current_tab,
   },
   -- To be remapped:
   -- CTRL+SHIFT+ALT  LeftArrow  AdjustPaneSize={"Left", 1}
