@@ -278,6 +278,16 @@ config.keys = {
     mods = 'ALT',
     action = rename_current_tab,
   },
+  {
+    key = 'Tab',
+    mods = 'CTRL|ALT',
+    action = wezterm.action.MoveTabRelative(1),
+  },
+  {
+    key = 'Tab',
+    mods = 'CTRL|ALT|SHIFT',
+    action = wezterm.action.MoveTabRelative(-1),
+  },
   -- To be remapped:
   -- CTRL+SHIFT+ALT  LeftArrow  AdjustPaneSize={"Left", 1}
   -- CTRL+SHIFT+ALT  RightArrow  AdjustPaneSize={"Right", 1}
