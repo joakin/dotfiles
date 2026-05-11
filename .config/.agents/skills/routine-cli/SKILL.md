@@ -1,15 +1,15 @@
 ---
 name: routine-cli
-description: Use Routine from command-line agents through the native Routine controller REPL. Use when an agent needs to inspect or change the user's Routine data, call Routine RPCs, run graph queries, list organizations/workspaces/tables, or automate Routine on behalf of the user.
+description: Use the Routine app from the CLI. Use when an agent needs to inspect or change or automate Routine actions and data on behalf of the user.
 ---
 
 # routine-cli
 
 Use this skill when the user asks an agent to inspect or change Routine data through the local Routine client.
 
-Be brief. Prefer existing scripts over raw REPL discovery.
+Be brief. Prefer existing scripts, or else `./cli.ts`.
 
-## Scripts First
+## Start Here
 
 Reusable Routine CLI automations live in:
 
@@ -17,51 +17,45 @@ Reusable Routine CLI automations live in:
 ~/dev/routine/scripts
 ```
 
-Before using the raw REPL, list that folder and check whether an existing script already performs the requested action:
+List the scripts:
 
 !`ls -la ~/dev/routine/scripts`
 
-Prefer an existing script when it matches the request. Scripts should default to human-readable output and offer structured JSON with `--json` when that is useful for agents, LLMs, or other scripts.
+## Full API with cli.ts
+
+Use `./cli.ts` for all known RPCs.
+
+```sh
+cd ~/dev/routine/scripts
+./cli.ts --list
+./cli.ts --search workspace
+./cli.ts --describe workspace.all
+./cli.ts workspace.all
+./cli.ts workspace.all --json
+./cli.ts workspace.rename --args '["workspace:example", "New name"]' --dry-run
+```
+
+Prefer `./cli.ts --describe <rpc.name>` over reading code. Use `--json` when another tool or script needs structured results.
+
+## More instructions
+
+```sh
+sed -n '1,180p' ~/dev/routine/scripts/AGENTS.md
+```
+
+Follow `AGENTS.md` for output conventions, safety rules, and when to add reusable scripts. Current convention: scripts default to human-readable output; pass `--json` when structured output is needed.
 
 ```sh
 ~/dev/routine/scripts/show-assigned-tickets
 ~/dev/routine/scripts/show-assigned-tickets --json
 ```
 
-## Raw CLI
-
-If no script exists, use the Routine CLI reference in [ROUTINE_CLI_COMMANDS.md](ROUTINE_CLI_COMMANDS.md).
-
-Binary location:
-
-```sh
-~/dev/routine/scripts/routine-cli
-```
-
-If the symlink is missing, notify the user and stop.
-
-The binary is a REPL. For agent automation, pipe commands into it so it exits on EOF.
-
-Redirect stderr when parsing results because Routine logs go to stderr and command results print to stdout.
-
-```sh
-printf 'dev []\n' | ~/dev/routine/scripts/routine-cli 2>/tmp/routine-cli.log
-```
-
-Expected stdout:
-
-```text
-true
-```
-
 ## Safety
 
 Read operations are fine for inspection.
 
-Only make write calls when the user explicitly asks for the specific action. Before writes, identify the exact RPC and arguments, explain the intended mutation, confirm workspace/object IDs, run the command with stderr redirected, and report the result.
+Only make write calls when the user explicitly asks for the specific action. Before writes, identify the exact script or RPC and arguments, confirm workspace/object IDs, explain the mutation, use dry-run support when available, then report the result.
 
 ## Capture Reusable Knowledge
 
-When raw REPL discovery reveals a useful repeatable workflow, ask a sub-agent to turn it into a reusable script in `~/dev/routine/scripts`.
-
-Give the sub-agent the exact RPCs, graph queries, expected output contract, and file ownership. It must follow `~/dev/routine/scripts/AGENTS.md`, edit files directly, verify the script, and leave the result in the scripts git repo.
+When discovery reveals a useful repeatable workflow, turn it into a focused executable in `~/dev/routine/scripts` following that repo's `AGENTS.md` using a subagent.
