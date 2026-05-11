@@ -21,11 +21,11 @@ Before using the raw REPL, list that folder and check whether an existing script
 
 !`ls -la ~/dev/routine/scripts`
 
-Prefer an existing script when it matches the request. Scripts should expose structured output for agents by default, usually JSON, and may also offer human-friendly output with a format flag.
+Prefer an existing script when it matches the request. Scripts should default to human-readable output and offer structured JSON with `--json` when that is useful for agents, LLMs, or other scripts.
 
 ```sh
 ~/dev/routine/scripts/show-assigned-tickets
-~/dev/routine/scripts/show-assigned-tickets --format human
+~/dev/routine/scripts/show-assigned-tickets --json
 ```
 
 ## Raw CLI
