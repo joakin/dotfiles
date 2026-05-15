@@ -2,12 +2,13 @@
 size = 16
 
 [[font.normal]]
-family = "Monaspace Krypton Var"
+family = "TX-02"
+style = "Normal"
 
 [[font.italic]]
-family = "Monaspace Radon Var"
+family = "Monaspace Radon"
 style = "Normal"
 
 [[font.bold_italic]]
-family = "Monaspace Radon Var"
+family = "Monaspace Radon"
 style = "Bold"
