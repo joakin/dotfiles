@@ -74,6 +74,9 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple == "x86_64-apple-darwin" then
   font_size = 16
   config.line_height = 1.4
+  -- Configure the font dir so that direct font names work, for fonts like
+  -- "PP Right Serif Mono *Fine*"
+  config.font_dirs = { '/Users/joakin/Library/Fonts' }
   -- Weights: "Thin", "ExtraLight", "Light", "DemiLight", "Book", "Regular", "Medium", "DemiBold", "Bold", "ExtraBold", "Black", "ExtraBlack"
   -- font = wezterm.font('Maple Mono', { weight = 'Light' })
   -- font = wezterm.font('JetBrainsMono Nerd Font Mono', { weight = 'Regular' })
@@ -144,14 +147,19 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   -- font_size = 18
   -- font = wezterm.font('MD IO Trial', { weight = 300 })
   -- font_bold("MD IO Trial", 500)
-  font = wezterm.font('TX-02', { weight = 300 })
-  font_bold("TX-02", 400)
-  -- font = wezterm.font('PP Right Grotesk Mono', { weight = 400 })
-  -- font_size = 18
+  -- font = wezterm.font('TX-02', { weight = 300 })
+  -- font_bold("TX-02", 400)
+  font = wezterm.font('PP Right Grotesk Mono', { weight = 400 })
+  -- font_italic("PP Right Serif Mono Fine", 400, false)
+  font_bold("PP Right Grotesk Mono", 500)
   -- font = wezterm.font('Drafting* Mono', { weight = 400 })
   -- font = wezterm.font('Liga SFMono Nerd Font', { weight = 400 })
   -- font = wezterm.font('Ioskeley Mono', { weight = 400 })
   -- font = wezterm.font('CommitMono', { weight = 400 })
+  -- PP Right Serif Mono reports Fine/Dark/Regular as the same CoreText
+  -- family+weight, so select the exact face by full name from font_dirs.
+  -- font = wezterm.font('PP Right Serif Mono Fine', { weight = 400 })
+  -- font_size = 18
 else
   if is_wsl() then
     local wsl_domains = wezterm.default_wsl_domains()
@@ -296,11 +304,11 @@ config.keys = {
   -- CTRL+SHIFT  Z  TogglePaneZoomState
 }
 
--- config.color_scheme = 'GruvboxDark'
+config.color_scheme = 'GruvboxDark'
 -- config.color_scheme = 'Gruvbox Light'
 -- config.color_scheme = 'Tokyo Night'
 -- config.color_scheme = 'Tokyo Night Day'
-config.color_scheme = 'Tomorrow Night'
+-- config.color_scheme = 'Tomorrow Night'
 -- config.color_scheme = 'Tomorrow'
 
 config.hide_tab_bar_if_only_one_tab = true
@@ -315,7 +323,7 @@ config.inactive_pane_hsb = {
   brightness = 0.3,
 }
 
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.96
 config.macos_window_background_blur = 20
 config.win32_system_backdrop = "Acrylic" -- "Mica" "Tabbed"
 
