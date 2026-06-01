@@ -340,6 +340,24 @@ end
 -- https://github.com/wez/wezterm/pull/5025
 config.enable_kitty_keyboard = false
 
+local function basename(path)
+  return path:gsub('(.*[/\\])(.*)', '%2')
+end
+
+wezterm.on('format-tab-title', function(tab)
+  if tab.tab_title and #tab.tab_title > 0 then
+    return tab.tab_title
+  end
+
+  local cwd = tab.active_pane.current_working_dir
+
+  if cwd and cwd.file_path then
+    return basename(cwd.file_path)
+  end
+
+  return tab.active_pane.title
+end)
+
 local function segments_for_right_status(window)
   local active_tab = window:active_tab()
   local panes_info = active_tab:panes_with_info()
