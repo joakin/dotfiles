@@ -1,11 +1,15 @@
 ---
 name: routine-submit
-description: Submit Routine frontend work to GitLab. Use when the user asks to submit a branch, create a GitLab MR, prepare work for review, approve an MR, or set GitLab auto-merge for this repository.
+description:
+  Submit Routine frontend work to GitLab. Use when the user asks to submit a
+  branch, create a GitLab MR, prepare work for review, approve an MR, or set
+  GitLab auto-merge for this repository.
 ---
 
 # routine-submit
 
-Use this skill to turn finished local work in `routine/front` into a clean GitLab merge request.
+Use this skill to turn finished local work in `routine/front` into a clean
+GitLab merge request.
 
 Be brief.
 
@@ -16,17 +20,24 @@ Be brief.
 - Target branch: `master`, unless the user says otherwise
 - Branch prefixes: `feature/`, `fix/`, or `sandbox/`
 - MR tool: `glab`, not `gh`
-- Preferred MR final state: pushed, approved if allowed, and added to merge train when checks pass
+- Preferred MR final state: pushed, approved if allowed, and added to merge
+  train when checks pass
 
 ## Safety Rules
 
 - Never run destructive Git commands unless the user explicitly requests them.
 - Before committing, inspect `git status`, `git diff`, and recent `git log`.
-- Do not include unrelated user changes, secrets, `.env` files, credentials, or generated noise.
-- Treat "submit this" or "make an MR" as permission to create the needed branch, commits, push, MR, approval, and auto-merge. If the working tree contains ambiguous unrelated changes, ask first.
-- Do not use `--fill` for MR creation. Write the title and description manually from the actual diff and commits.
+- Do not include unrelated user changes, secrets, `.env` files, credentials, or
+  generated noise.
+- Treat "submit this" or "make an MR" as permission to create the needed branch,
+  commits, push, MR, approval, and auto-merge. If the working tree contains
+  ambiguous unrelated changes, ask first.
+- Do not use `--fill` for MR creation. Write the title and description manually
+  from the actual diff and commits.
 - Do not skip hooks unless the user explicitly requests it.
-- Every MR description must include a `/no-user-impact` checkbox. If the change has user impact, leave it unchecked and update `CHANGELOG.md` under `## [Unreleased]` using `### Added`, `### Changed`, or `### Fixed`.
+- Every MR description must include a `/no-user-impact` checkbox. If the change
+  has user impact, leave it unchecked and update `CHANGELOG.md` under
+  `## [Unreleased]` using `### Added`, `### Changed`, or `### Fixed`.
 
 ## Workflow
 
@@ -53,7 +64,8 @@ Choose the prefix by intent:
 
 3. Commit in logical units.
 
-Group changes by reviewable concern, not by file count. Use concise messages that explain the purpose:
+Group changes by reviewable concern, not by file count. Use concise messages
+that explain the purpose:
 
 ```sh
 git add <relevant-files>
@@ -65,7 +77,8 @@ EOF
 )"
 ```
 
-If hooks modify files, inspect the result and create a new commit for any remaining fixes. Only amend when the normal agent Git safety rules allow it.
+If hooks modify files, inspect the result and create a new commit for any
+remaining fixes. Only amend when the normal agent Git safety rules allow it.
 
 4. Run checks appropriate to the changed surface:
 
@@ -73,7 +86,9 @@ If hooks modify files, inspect the result and create a new commit for any remain
 make check/front
 ```
 
-Use `make check/controller` for controller changes and `make check` for broad or cross-cutting changes. If checks are skipped or fail, state that clearly in the MR description.
+Use `make check/controller` for controller changes and `make check` for broad or
+cross-cutting changes. If checks are skipped or fail, state that clearly in the
+MR description.
 
 5. Push the branch:
 
@@ -92,10 +107,6 @@ glab mr create \
 - Keep the reference search hint visible in the relevant editor state.
 - Preserve existing interaction behavior while making the hint easier to discover.
 
-## Test Plan
-- [x] Ran `make check/front`
-- [x] Manually verified the affected UI state
-
 ## Changelog
 - [ ] /no-user-impact
 
@@ -104,8 +115,11 @@ EOF
   --remove-source-branch
 ```
 
-Keep MR descriptions specific. Mention the user-facing effect, important implementation choices, and exactly what was tested.
-For the changelog checkbox: use `- [x] /no-user-impact` only when the MR has no user impact and does not need `CHANGELOG.md`. Use `- [ ] /no-user-impact` when there is user impact and include the changelog entry in the MR.
+Keep MR descriptions specific. Mention the user-facing effect, important
+implementation choices, and exactly what was tested. For the changelog checkbox:
+use `- [x] /no-user-impact` only when the MR has no user impact and does not
+need `CHANGELOG.md`. Use `- [ ] /no-user-impact` when there is user impact and
+include the changelog entry in the MR.
 
 7. Approve the MR if GitLab allows self-approval:
 
@@ -113,7 +127,8 @@ For the changelog checkbox: use `- [x] /no-user-impact` only when the MR has no 
 glab mr approve
 ```
 
-If GitLab rejects approval because approval rules require another reviewer, report that and leave the MR otherwise ready.
+If GitLab rejects approval because approval rules require another reviewer,
+report that and leave the MR otherwise ready.
 
 8. Add to merge train when checks pass:
 
@@ -142,7 +157,9 @@ glab api graphql \
   -f sha="$(git rev-parse HEAD)"
 ```
 
-Do not use `glab mr merge --auto-merge` for this project; it returns `405 Method Not Allowed`. The project uses merge trains, and `ADD_TO_MERGE_TRAIN_WHEN_CHECKS_PASS` is the working auto-merge path.
+Do not use `glab mr merge --auto-merge` for this project; it returns
+`405 Method Not Allowed`. The project uses merge trains, and
+`ADD_TO_MERGE_TRAIN_WHEN_CHECKS_PASS` is the working auto-merge path.
 
 9. Final response:
 
