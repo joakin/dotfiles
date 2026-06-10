@@ -307,12 +307,79 @@ config.keys = {
   -- CTRL+SHIFT  Z  TogglePaneZoomState
 }
 
-config.color_scheme = 'GruvboxDark'
--- config.color_scheme = 'Gruvbox Light'
--- config.color_scheme = 'Tokyo Night'
--- config.color_scheme = 'Tokyo Night Day'
--- config.color_scheme = 'Tomorrow Night'
--- config.color_scheme = 'Tomorrow'
+local function color_scheme_for_appearance(appearance)
+  -- 'GruvboxDark'
+  -- 'Gruvbox Light'
+  -- 'Tokyo Night'
+  -- 'Tokyo Night Day'
+  -- 'Tomorrow Night'
+  -- 'Tomorrow'
+  if appearance:find('Dark') then
+    return 'GruvboxDark'
+  end
+
+  -- return 'Gruvbox Light'
+  -- return 'Catppuccin Latte'
+  return 'rose-pine-dawn'
+end
+
+local function scheme_palette(color_scheme)
+  return wezterm.color.get_builtin_schemes()[color_scheme]
+end
+
+local function tab_bar_colors_for_scheme(scheme)
+  local bg = wezterm.color.parse(scheme.background)
+  local fg = wezterm.color.parse(scheme.foreground)
+  local _, _, lightness = bg:hsla()
+  local is_dark = lightness < 0.5
+
+  local tab_bar_bg = is_dark and bg or bg:darken(0.03)
+  local active_bg = is_dark and bg:lighten(0.06) or bg:lighten(0.02)
+  local inactive_bg = tab_bar_bg
+  local hover_bg = is_dark and bg:lighten(0.1) or bg:darken(0.06)
+  local inactive_fg = fg:desaturate(0.45)
+
+  return {
+    window_frame = {
+      active_titlebar_bg = tab_bar_bg,
+      inactive_titlebar_bg = tab_bar_bg,
+      active_titlebar_fg = fg,
+      inactive_titlebar_fg = inactive_fg,
+    },
+    tab_bar = {
+      background = tab_bar_bg,
+      active_tab = {
+        bg_color = active_bg,
+        fg_color = fg,
+      },
+      inactive_tab = {
+        bg_color = inactive_bg,
+        fg_color = inactive_fg,
+      },
+      inactive_tab_hover = {
+        bg_color = hover_bg,
+        fg_color = fg,
+      },
+      new_tab = {
+        bg_color = inactive_bg,
+        fg_color = inactive_fg,
+      },
+      new_tab_hover = {
+        bg_color = hover_bg,
+        fg_color = fg,
+      },
+    },
+  }
+end
+
+local appearance = wezterm.gui.get_appearance()
+local selected_color_scheme = color_scheme_for_appearance(appearance)
+local theme_colors = tab_bar_colors_for_scheme(scheme_palette(selected_color_scheme))
+
+config.color_scheme = selected_color_scheme
+config.colors = {
+  tab_bar = theme_colors.tab_bar,
+}
 
 config.hide_tab_bar_if_only_one_tab = true
 config.window_padding = {
@@ -326,7 +393,7 @@ config.inactive_pane_hsb = {
   brightness = 0.3,
 }
 
-config.window_background_opacity = 0.96
+config.window_background_opacity = 0.94
 config.macos_window_background_blur = 20
 config.win32_system_backdrop = "Acrylic" -- "Mica" "Tabbed"
 
@@ -336,7 +403,13 @@ if not useDefaultFrameFont then
   config.window_frame = {
     font = font,
     font_size = font_size,
+    active_titlebar_bg = theme_colors.window_frame.active_titlebar_bg,
+    inactive_titlebar_bg = theme_colors.window_frame.inactive_titlebar_bg,
+    active_titlebar_fg = theme_colors.window_frame.active_titlebar_fg,
+    inactive_titlebar_fg = theme_colors.window_frame.inactive_titlebar_fg,
   }
+else
+  config.window_frame = theme_colors.window_frame
 end
 
 -- Disabled because <del> doesn't work in neovim
