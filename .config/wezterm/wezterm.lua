@@ -147,18 +147,21 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   -- font_size = 18
   -- font = wezterm.font('MD IO Trial', { weight = 300 })
   -- font_bold("MD IO Trial", 500)
-  -- font = wezterm.font('TX-02', { weight = 300 })
+  -- font = wezterm.font('TX-02', { weight = 400 })
   -- font_bold("TX-02", 400)
   font = wezterm.font('PP Right Grotesk Mono', { weight = 400 })
-  -- font_italic("PP Right Serif Mono Fine", 400, false)
+  font_italic("PP Right Serif Mono Fine", 400, true)
   font_bold("PP Right Grotesk Mono", 500)
-  -- font = wezterm.font('Drafting* Mono', { weight = 400 })
+  font_size = 18
   -- font = wezterm.font('Liga SFMono Nerd Font', { weight = 400 })
   -- font = wezterm.font('Ioskeley Mono', { weight = 400 })
-  -- font = wezterm.font('CommitMono', { weight = 400 })
   -- PP Right Serif Mono reports Fine/Dark/Regular as the same CoreText
   -- family+weight, so select the exact face by full name from font_dirs.
-  -- font = wezterm.font('PP Right Serif Mono Fine', { weight = 400 })
+  -- font = wezterm.font('PP Right Serif Mono Fine', { weight = 'Regular' })
+  -- font_bold('PP Right Serif Mono Regular', 'Regular')
+  -- font_size = 18
+  -- font = wezterm.font('PP Right Serif Mono Regular', { weight = 'Regular' })
+  -- font_bold('PP Right Serif Mono Regular', 600)
   -- font_size = 18
 else
   if is_wsl() then
