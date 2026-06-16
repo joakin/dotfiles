@@ -149,7 +149,9 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   -- font_bold("MD IO Trial", 500)
   -- font = wezterm.font('TX-02', { weight = 400 })
   -- font_bold("TX-02", 400)
-  font = wezterm.font('PP Right Grotesk Mono', { weight = 400 })
+  -- The Fine face also reports itself as PP Right Grotesk Mono Regular,
+  -- so use the exact full face name to avoid nondeterministic resolution.
+  font = wezterm.font('PP Right Grotesk Mono Regular')
   font_italic("PP Right Serif Mono Fine", 400, true)
   font_bold("PP Right Grotesk Mono", 500)
   font_size = 18
