@@ -335,10 +335,10 @@ local function tab_bar_colors_for_scheme(scheme)
   local _, _, lightness = bg:hsla()
   local is_dark = lightness < 0.5
 
-  local tab_bar_bg = is_dark and bg or bg:darken(0.03)
-  local active_bg = is_dark and bg:lighten(0.06) or bg:lighten(0.02)
+  local tab_bar_bg = is_dark and bg or bg:darken(0.08)
+  local active_bg = is_dark and bg:lighten(0.06) or bg:lighten(0.03)
   local inactive_bg = tab_bar_bg
-  local hover_bg = is_dark and bg:lighten(0.1) or bg:darken(0.06)
+  local hover_bg = is_dark and bg:lighten(0.1) or bg:lighten(0.03)
   local inactive_fg = fg:desaturate(0.45)
 
   return {
