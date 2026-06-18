@@ -116,10 +116,13 @@ EOF
 ```
 
 Keep MR descriptions specific. Mention the user-facing effect, important
-implementation choices, and exactly what was tested. For the changelog checkbox:
-use `- [x] /no-user-impact` only when the MR has no user impact and does not
-need `CHANGELOG.md`. Use `- [ ] /no-user-impact` when there is user impact and
+implementation choices (if any) and how to test the changes (if easy, no linting
+or tests or other cli commands run). For the changelog checkbox: use
+`- [x] /no-user-impact` only when the MR has no user impact and does not need
+`CHANGELOG.md`. Use `- [ ] /no-user-impact` when there is user impact and
 include the changelog entry in the MR.
+
+6. Assign the MR to the user
 
 7. Approve the MR if GitLab allows self-approval:
 
