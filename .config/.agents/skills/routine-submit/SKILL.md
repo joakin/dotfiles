@@ -1,15 +1,15 @@
 ---
 name: routine-submit
 description:
-  Submit Routine frontend work to GitLab. Use when the user asks to submit a
-  branch, create a GitLab MR, prepare work for review, approve an MR, or set
-  GitLab auto-merge for this repository.
+  Submit Routine frontend or API work to GitLab. Use when the user asks to
+  submit a branch, create a GitLab MR, prepare work for review, approve an MR,
+  or set GitLab auto-merge for these repositories.
 ---
 
 # routine-submit
 
-Use this skill to turn finished local work in `routine/front` into a clean
-GitLab merge request.
+Use this skill to turn finished local work in `routine/front` or `routine/api`
+into a clean GitLab merge request.
 
 Be brief.
 
@@ -20,8 +20,10 @@ Be brief.
 - Target branch: `master`, unless the user says otherwise
 - Branch prefixes: `feature/`, `fix/`, or `sandbox/`
 - MR tool: `glab`, not `gh`
-- Preferred MR final state: pushed, approved if allowed, and added to merge
-  train when checks pass
+- Frontend MR final state: pushed, assigned, approved if allowed, and added to
+  the merge train when checks pass
+- API MR final state: pushed and assigned; do not approve or enable auto-merge
+  unless the user explicitly requests it
 
 ## Safety Rules
 
@@ -30,14 +32,19 @@ Be brief.
 - Do not include unrelated user changes, secrets, `.env` files, credentials, or
   generated noise.
 - Treat "submit this" or "make an MR" as permission to create the needed branch,
-  commits, push, MR, approval, and auto-merge. If the working tree contains
-  ambiguous unrelated changes, ask first.
+  commits, push, and MR. For `routine/front`, this also permits approval and
+  auto-merge. If the working tree contains ambiguous unrelated changes, ask
+  first.
+- When submitting `routine/api`, work in the API repository and create only the
+  API MR. Do not update, commit, push, or create an MR for the frontend
+  submodule pointer unless the user explicitly requests it.
 - Do not use `--fill` for MR creation. Write the title and description manually
   from the actual diff and commits.
 - Do not skip hooks unless the user explicitly requests it.
-- Every MR description must include a `/no-user-impact` checkbox. If the change
-  has user impact, leave it unchecked and update `CHANGELOG.md` under
+- Frontend MR descriptions must include a `/no-user-impact` checkbox. If the
+  change has user impact, leave it unchecked and update `CHANGELOG.md` under
   `## [Unreleased]` using `### Added`, `### Changed`, or `### Fixed`.
+- API MRs do not use the user-impact checkbox or this changelog procedure.
 
 ## Workflow
 
@@ -87,8 +94,8 @@ make check/front
 ```
 
 Use `make check/controller` for controller changes and `make check` for broad or
-cross-cutting changes. If checks are skipped or fail, state that clearly in the
-MR description.
+cross-cutting changes. If checks are skipped or fail, report that in the final
+chat response. Do not add local validation details to the MR description.
 
 5. Push the branch:
 
@@ -107,6 +114,10 @@ glab mr create \
 - Keep the reference search hint visible in the relevant editor state.
 - Preserve existing interaction behavior while making the hint easier to discover.
 
+## Why
+The hint currently disappears when it is most useful, making reference search
+harder to discover.
+
 ## Changelog
 - [ ] /no-user-impact
 
@@ -115,16 +126,27 @@ EOF
   --remove-source-branch
 ```
 
-Keep MR descriptions specific. Mention the user-facing effect, important
-implementation choices (if any) and how to test the changes (if easy, no linting
-or tests or other cli commands run). For the changelog checkbox: use
-`- [x] /no-user-impact` only when the MR has no user impact and does not need
-`CHANGELOG.md`. Use `- [ ] /no-user-impact` when there is user impact and
-include the changelog entry in the MR.
+Keep MR descriptions concise and focused on the change itself:
 
-6. Assign the MR to the user
+- `## Summary` describes the behavior or implementation changed. Include only
+  information useful to reviewers and future readers.
+- `## Why` is optional. Include it only when the motivation is not obvious from
+  the summary, using relevant context from the conversation to explain the
+  problem or reason for the change.
+- `## Changelog` applies only to frontend MRs. Use
+  `- [x] /no-user-impact` only when the MR has no user impact and does not need
+  `CHANGELOG.md`. Use `- [ ] /no-user-impact` when there is user impact and
+  include the changelog entry in the MR. Omit this section from API MRs.
 
-7. Approve the MR if GitLab allows self-approval:
+Do not include test plans, validation steps, commands run, local test or build
+results, environment-specific warnings, dependency issues, unrelated local
+nitpicks, or implementation trivia that does not help explain the change.
+Report checks, failures, skipped checks, and local-environment issues only in
+the final chat response, not in the MR description.
+
+7. Assign the MR to the user
+
+8. For frontend MRs only, approve the MR if GitLab allows self-approval:
 
 ```sh
 glab mr approve
@@ -133,7 +155,7 @@ glab mr approve
 If GitLab rejects approval because approval rules require another reviewer,
 report that and leave the MR otherwise ready.
 
-8. Add to merge train when checks pass:
+9. For frontend MRs only, add to the merge train when checks pass:
 
 ```sh
 glab api graphql \
@@ -164,9 +186,9 @@ Do not use `glab mr merge --auto-merge` for this project; it returns
 `405 Method Not Allowed`. The project uses merge trains, and
 `ADD_TO_MERGE_TRAIN_WHEN_CHECKS_PASS` is the working auto-merge path.
 
-9. Final response:
+10. Final response:
 
 - Include the MR URL.
-- State whether approval succeeded.
-- State whether merge train / auto-merge was enabled.
+- For frontend MRs, state whether approval succeeded and whether merge train /
+  auto-merge was enabled.
 - Summarize checks run and any skipped or failing checks.
