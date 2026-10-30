@@ -145,16 +145,19 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
   -- font_italic("Codelia Ligatures")
   -- font = wezterm.font('Sono', { weight = 300 })
   -- font_size = 18
-  -- font = wezterm.font('MD IO Trial', { weight = 300 })
-  -- font_bold("MD IO Trial", 500)
-  -- font = wezterm.font('TX-02', { weight = 400 })
-  -- font_bold("TX-02", 400)
+
+  font = wezterm.font('TX-02', { weight = 400 })
+  font_bold("TX-02", 400)
+  -- font_italic("PP Right Serif Mono Fine", 400, true)
+
   -- The Fine face also reports itself as PP Right Grotesk Mono Regular,
   -- so use the exact full face name to avoid nondeterministic resolution.
-  font = wezterm.font('PP Right Grotesk Mono Regular')
-  font_italic("PP Right Serif Mono Fine", 400, true)
-  font_bold("PP Right Grotesk Mono", 500)
-  font_size = 18
+
+  -- font = wezterm.font('PP Right Grotesk Mono Regular')
+  -- font_italic("PP Right Serif Mono Fine", 400, true)
+  -- font_bold("PP Right Grotesk Mono", 500)
+  -- font_size = 18
+
   -- font = wezterm.font('Liga SFMono Nerd Font', { weight = 400 })
   -- font = wezterm.font('Ioskeley Mono', { weight = 400 })
   -- PP Right Serif Mono reports Fine/Dark/Regular as the same CoreText
