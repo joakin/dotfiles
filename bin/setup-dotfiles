@@ -25,7 +25,10 @@ ln_cfg .config ~/.config
 ln_cfg bin ~/bin
 
 mkdir -p ~/.agents
+ln_rel ../.config/.agents/AGENTS.md ~/.agents/AGENTS.md
 ln_rel ../.config/.agents/skills ~/.agents/skills
+ln_rel ../.agents/AGENTS.md ~/.codex/AGENTS.md
+ln_rel ../.agents/AGENTS.md ~/.claude/CLAUDE.md
 ln_rel ../.config/.agents/skills ~/.cursor/skills
 ln_rel ../.config/.agents/skills ~/.claude/skills
 
